@@ -13,6 +13,9 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/psr/log" />
@@ -106,6 +109,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1dNqKhs8Lx9Oc4yHzU3BoqdlTaa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -160,7 +164,7 @@
       <workItem from="1592968957639" duration="23164000" />
       <workItem from="1593009957249" duration="7250000" />
       <workItem from="1593057332847" duration="31150000" />
-      <workItem from="1593125539247" duration="23084000" />
+      <workItem from="1593125539247" duration="23593000" />
     </task>
     <servers />
   </component>
