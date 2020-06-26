@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="" />
+    <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidenavAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidenavAdmin.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +168,7 @@
       <workItem from="1592968957639" duration="23164000" />
       <workItem from="1593009957249" duration="7250000" />
       <workItem from="1593057332847" duration="31150000" />
-      <workItem from="1593125539247" duration="25309000" />
+      <workItem from="1593125539247" duration="26865000" />
     </task>
     <servers />
   </component>
