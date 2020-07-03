@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/topnavAdmin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/topnavUser.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/appAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/appAdmin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/appUser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/appUser.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +177,7 @@
       <workItem from="1593576353888" duration="13305000" />
       <workItem from="1593598742585" duration="6180000" />
       <workItem from="1593656716392" duration="23457000" />
-      <workItem from="1593758716527" duration="4342000" />
+      <workItem from="1593758716527" duration="4698000" />
     </task>
     <servers />
   </component>
@@ -215,9 +218,14 @@
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state width="1323" height="161" key="GridCell.Tab.0.right/0.30.1366.738@0.30.1366.738" timestamp="1592367163978" />
-    <state x="517" y="318" key="NewPhpFileDialog" timestamp="1593421306960">
+    <state x="391" y="197" key="NewPhpClassDialog" timestamp="1593763206794">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
+    <state x="391" y="197" key="NewPhpClassDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1593763206794" />
+    <state x="517" y="318" key="NewPhpFileDialog" timestamp="1593763216772">
+      <screen x="0" y="30" width="1366" height="738" />
+    </state>
+    <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1593763216772" />
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593421306960" />
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog" timestamp="1593758721202">
       <screen x="0" y="30" width="1366" height="738" />
