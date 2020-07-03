@@ -112,7 +112,7 @@
                         <div class="card-item col-lg-6 col-md-6 col-sm-12">
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-center">
-                                   <a href="/purchase/payment"  class="btn btn-custom-secondry btn-block">Order</a>
+                                   <a href="/purchase"  class="btn btn-custom-secondry btn-block">Order</a>
                                 </div>
                             </div>
                         </div>
