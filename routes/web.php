@@ -39,7 +39,31 @@ Route::get('/master_data/create_method','Admin\MasterDataController@createMethod
 Route::get('/master_data/create_room_type','Admin\MasterDataController@createRoomType')->name('createRoom');
 Route::get('/master_data/create_airlines','Admin\MasterDataController@createAirlines')->name('createAirlines');
 Route::get('/master_data/create_category','Admin\MasterDataController@createCategory')->name('createCategory');
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/listPacket', function (){
+    return view('user.listProduct');
+});
+Route::get('/listPacket/detail',function (){
+    return view('user.detailProduct');
+});
+Route::get('/purchase',function (){
+    return view('user.transaction');
+});
+
+Route::get('/purchase/payment',function (){
+    return view('user.paymentConfirm');
+});
+
+Route::get('/purchase/list',function (){
+    return view('user.purchaseList');
+});
+
+Route::get('/account/profile',function (){
+    return view('user.accountProfile');
+});
+
+
 /**
 Route::get('{path}','HomeController@index')->where( 'path', '([A-z\d-/_.]+)?' );**/
 
