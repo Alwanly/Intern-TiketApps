@@ -19,30 +19,32 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-10">
             <div class="card">
-                <div class="card-header">Create Bank</div>
+                <div class="card-header">edit Rekening</div>
 
                 <div class="card-body">
-                    <form action="{{route('storeBank')}}" method="post">
+                    <form action="{{route('updateRekening',['id'=> $rekening->id])}}" method="post">
                         @csrf
+                        @method('put')
                         {{-- Bank --}}
                         <div class="form-group">
-                            <label for="inputEmail4">Code Bank</label>
-                            <input name="bank_code" type="text" class="form-control" id="inputEmail4" placeholder="Name Category">
-                        </div>
-                        {{-- Bank --}}
-                        <div class="form-group">
-                            <label for="inputEmail4">Name Bank</label>
-                            <input name="bank_name" type="text" class="form-control" id="inputEmail4" placeholder="Name Category">
+                            <label for="exampleFormControlSelect1">Bank</label>
+                            <select name="bank_id" class="form-control" id="exampleFormControlSelect1">
+                                @foreach($banks as $bank)
+                                    <option value="{{$bank->id}}">{{$bank->bank_name}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        {{-- Payment Method --}}
+                        {{-- Bank --}}
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Payment Method</label>
-                            <select name="method_id" class="form-control" id="exampleFormControlSelect1">
-                                    @foreach($methods as $m)
-                                    <option value="{{$m->id}}">{{$m->payment_name}}</option>
-                                    @endforeach
-                            </select>
+                            <label for="inputEmail4">No Rekening</label>
+                            <input name="norekening" type="text" class="form-control" id="inputEmail4" value="{{$rekening->norekening}}">
+                        </div>
+
+                        {{-- Bank --}}
+                        <div class="form-group">
+                            <label for="inputEmail4">Name Rekening</label>
+                            <input name="rekening_name" type="text" class="form-control" id="inputEmail4" value="{{$rekening->rekening_name}}">
                         </div>
 
                         {{-- Status --}}
@@ -54,7 +56,8 @@
                                     @endforeach
                             </select>
                         </div>
-                        <button type="submit" id="submit" class="btn btn-primary" value="update">Save</button>
+                        <button type="submit" id="submit" class="btn btn-primary" value="update">Update</button>
+                        <button type="button" id="cancel" class="btn btn-outline-danger" value="cancel">Cancel</button>
                     </form>
                 </div>
             </div>
@@ -64,5 +67,8 @@
 @endsection
 @push('js')
 <script>
+    $('#cancel').click(function () {
+        location.href='{{route('masterData')}}'
+    })
 </script>
 @endpush

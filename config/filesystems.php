@@ -47,6 +47,22 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'banner_packet'=> [
+            'driver'=>'local',
+            'root'=> storage_path('app/public/bannerPacket'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'permissions' => [
+                'file' => [
+                    'public' => 0664,
+                    'private' => 0600,
+                ],
+                'dir' => [
+                    'public' => 0775,
+                    'private' => 0700,
+                ],
+            ],
+        ],
 
         'public' => [
             'driver' => 'local',

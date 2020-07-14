@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     protected $table = 'payments';
+    protected $fillable =
+        ['transaction_id','bank_id','nominal'];
 
     public function status(){
         return $this->belongsTo('App\StatusMaster');

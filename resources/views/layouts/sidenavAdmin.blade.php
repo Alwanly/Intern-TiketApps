@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('transactionList')}}" class="nav-link {{(request()->is('transaction')) ? 'active':''}}{{(request()->is('transaction*')) ? 'active':''}}">
+                    <a href="{{route('transactionList')}}" class="nav-link {{(request()->is('/transaction*')) ? 'active':''}}{{(request()->is('transaction*')) ? 'active':''}}">
                         <i class="nav-icon fas fa-receipt"></i>
                         <p>Transaction</p>
                     </a>

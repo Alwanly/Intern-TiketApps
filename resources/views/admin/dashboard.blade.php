@@ -52,9 +52,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{{$tr}}</h3>
 
-                            <p>User Registrations</p>
+                            <p>Transaction</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -67,14 +67,14 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>30</h3>
+                            <h3>{{$packet}}</h3>
 
                             <p>Activated Packets</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('packetList')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

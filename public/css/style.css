@@ -90,9 +90,23 @@ html, body{
     background-color: #FFFA3D;
     color: #009688;
 }
-
-.img-brand{
+.img-detail-wrapper{
+    width: 100%;
     height: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-brand{
+    padding: 1px;
+    width: 285px;
+    height: 200px;
+}
+.img-brand img{
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
 }
 .card-product{
     display: grid;
@@ -129,7 +143,7 @@ html, body{
     background-color: #FFFA3D;
     transform: scaleY(1.1);
 }
-.text-tilte{
+.text-title{
     padding: 5px;
     font-size: 24px;
     font-weight: bold;
@@ -173,7 +187,7 @@ html, body{
     font-size: large;
 }
 .method-payment > h4,label{
-    color: #98925C;
+    color: #98925C ;
     font-weight: bolder;
 
 }

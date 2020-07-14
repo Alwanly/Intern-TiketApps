@@ -10,21 +10,7 @@ window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter);
 
-let routes = [
-    { path: '/dashboard', component: require('./components/Admin/Dashboard/Dashboard.vue').default },
-    { path: '/packet', component: require('./components/Admin/PacketUmroh/PacketList.vue').default },
-    { path: '/agent', component: require('./components/Admin/Agent/AgentList.vue').default },
-    { path: '/payment', component: require('./components/Admin/Payment/PaymentList.vue').default },
-    { path: '/packet/detail', component: require('./components/Admin/PacketUmroh/PacketDetail.vue').default },
-
-];
-
-const router = new VueRouter({
-    mode: 'history',
-    routes // short for `routes: routes`
-});
 
 /**
  * The following block of code may be used to automatically register your

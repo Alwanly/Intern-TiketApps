@@ -9,16 +9,14 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 </head>
 <body class="">
 <div id="app">
@@ -28,7 +26,13 @@
     </main>
 </div>
 @include('layouts.footer')
+<script src="/js/app.js"></script>
+<script src="/js/menu.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+<!-- jQuery, Popper and Bootstrap JS -->
+<!-- Scripts -->
 
 @stack('js')
 </body>

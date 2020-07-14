@@ -10,7 +10,7 @@
                     <div class="col-sm-6 col-md-6">
                         <ol class="breadcrumb float-sm-right">
                             <a href="{{route('masterData')}}"  class="text-primary breadcrumb-item active">List Master Data</a>
-                            <li class="breadcrumb-item active">Create Data</li>
+                            <li class="breadcrumb-item active">Edit Data</li>
                         </ol>
                     </div>
                 </div>
@@ -19,31 +19,27 @@
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-10">
                 <div class="card">
-                    <div class="card-header">Create Method Payment</div>
-
+                    <div class="card-header">Create Airlines</div>
                     <div class="card-body">
-                        <form>
-                            {{-- Room --}}
+                        <form action="{{route('updateAirlines',['id'=>$airlines->id])}}" method="post">
+                            @csrf
+                            @method('put')
+                            {{-- Title --}}
                             <div class="form-group">
-                                <label for="inputEmail4">Name Room</label>
-                                <input type="text" class="form-control" id="inputEmail4" placeholder="Name Room">
+                                <label for="inputEmail4">Name Airlines</label>
+                                <input name="airlines_name" type="text" class="form-control" id="inputEmail4" value="{{$airlines->airlines_name}}">
                             </div>
-                            {{-- Capacity --}}
                             <div class="form-group">
-                                <label for="inputEmail4">Capacity</label>
-                                <input type="text" class="form-control" id="inputEmail4" placeholder="Capacity">
-                            </div>
-                            {{-- Price --}}
-                            <div class="form-group">
-                                <label for="inputEmail4">Price</label>
-                                <input type="text" class="form-control" id="inputEmail4" placeholder="Price">
+                                <label for="inputEmail4">Current Status</label>
+                                <input name="" type="text" class="form-control" id="inputEmail4" disabled  value="{{$airlines->status->status_name}}">
                             </div>
                             {{-- Status --}}
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Status</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>activated</option>
-                                    <option>inactivated</option>
+                                <select name="status_id" class="form-control" id="exampleFormControlSelect1">
+                                        @foreach($status as $st)
+                                        <option value="{{$st->id}}">{{$st->status_name}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                             <button type="submit" id="submit" class="btn btn-primary" value="update">Save</button>

@@ -15,51 +15,48 @@
                     </div>
                 </div>
             </div>
+            @include('alerts.alert')
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-10">
                 <div class="card">
-                    <div class="card-header">Create Packet Umroh</div>
+                    <div class="card-header">Update Packet Umroh</div>
 
                     <div class="card-body">
-                        <form>
-
+                        <form action="{{route('transactionUpdate')}}" method="post">
+                            @csrf
                             {{-- Title --}}
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Packet</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select name="packet" class="form-control" id="select-Packet">
                                     <option selected>Select Packet</option>
-                                    <option>Packet Umroh Murah</option>
-                                    <option>Packet Umroh VIP</option>
+                                    @foreach($packets as $packet)
+                                        <option value="{{$packet->id}}">{{$packet->packet_title}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                             {{-- Date --}}
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="inputCity">Date Manasik</label>
-                                    <input class="date form-control" type="text" placeholder="DD/MM/YYYY">
+                                    <input id="manasik" class="date form-control" type="text"  disabled placeholder="DD/MM/YYYY">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputCity">Date Take Off</label>
-                                    <input class="date form-control" type="text" placeholder="DD/MM/YYYY">
+                                    <input id="takeoff" class="date form-control" type="text" disabled placeholder="DD/MM/YYYY">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputCity">Date Return</label>
-                                    <input class="date form-control" type="text" placeholder="DD/MM/YYYY">
+                                    <input id="return" class="date form-control" type="text" disabled placeholder="DD/MM/YYYY">
                                 </div>
                             </div>
                             {{-- Status --}}
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Status Now</label>
-                                <input class="date form-control" type="text" placeholder="Menunggu Waktu Manasik">
-                            </div>
-
-                            {{-- Status --}}
-                            <div class="form-group">
                                 <label for="exampleFormControlSelect1">Status Update</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>activated</option>
-                                    <option>inactivated</option>
+                                <select name="status" class="form-control" id="exampleFormControlSelect1">
+                                    @foreach($status as $st)
+                                        <option value="{{$st->id}}">{{$st->status_name}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                             <button type="submit" id="submit" class="btn btn-primary" value="update">Update</button>
@@ -71,4 +68,26 @@
     </div>
 @endsection
 @push('js')
+
+    <script>
+        $('#select-Packet').change(function () {
+            var packetId = $(this).val();
+            console.log(packetId);
+
+            $.ajax({
+                type:"GET",
+                url:"/getpacket/"+packetId,
+                dataType:'json',
+                success:function (data) {
+                    $('#manasik').attr('value', data['manasik']);
+                    $('#takeoff').attr('value',data['takeoff']);
+                    $('#return').attr('value',data['return']);
+                },
+                error:function () {
+                    alert("error");
+                }
+            })
+        })
+    </script>
+
 @endpush

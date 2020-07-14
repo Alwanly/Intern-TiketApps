@@ -1,4 +1,4 @@
-{{--
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +10,16 @@
 
     <link rel="stylesheet" href="/css/app.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
+    <!-- Datatable--->
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper" id="app" >
 
     <!-- Navbar -->
-
+    @include('layouts.topnavAdmin')
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
@@ -47,7 +50,12 @@
 <script src="/js/menu.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+
+<!-- Datatable--->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
 @stack('js')
 </body>
 </html>
---}}
+

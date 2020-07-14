@@ -21,22 +21,26 @@
                 <h1>Promo Packet Umroh</h1>
             </div>
             <div class="row">
-                @for($i = 0 ; $i < 3 ;$i++)
+                @foreach($packets as $packet)
                     <div class="col-lg-4 d-flex justify-content-center">
-                        <div class="card card-product">
-                            <img class="card-img-top img-brand" src="/images/pkaet.jpg" alt="Card image cap">
-                            <div class="card-body pl-4">
-                                <h5 class="card-title col-12">Packet Umroh title </h5>
-                                <p class="card-text col-12 "> <i class="nav-icon fas fa-calendar-alt"></i> 2020 </p> <br>
-                                <p class="card-text col-12"> <b class="nav-icon">Rp</b> 10.000.000</p>
+                        <div class="card card-product" onclick="location.href='{{ route('detailPacket',['id'=>$packet->id]) }}'"  >
+                                <div class="img-brand">
+                                <img class="card-img-top" src="{{ asset('storage/bannerPacket/'.$packet->path_bannerpacket) }}" alt="Card image cap">
+                                </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{$packet->packet_title}}</h5><br>
+                                <hr>
+                                <p class="card-text"> <i class="nav-icon fas fa-calendar-alt"></i> {{$packet->detail->takeoff_date}} </p>
+                                <hr>
+                                <p class="card-text"> <b class="nav-icon">Rp</b> {{$packet->price[0]->room->room_price}}</p>
                             </div>
                         </div>
                     </div>
-                    @endfor
+                    @endforeach
             </div>
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <a href="/listPacket" class="btn btn-custom-primary">View</a>
+                    <a href="{{route('listPacket')}}" class="btn btn-custom-primary">View</a>
                 </div>
             </div>
         </div>

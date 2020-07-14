@@ -7,7 +7,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#"> List Packet Umroh</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('listPacket')}}"> List Packet Umroh</a></li>
                         <li class="breadcrumb-item">Detail Packet Umroh</li>
                     </ol>
                 </nav>
@@ -17,12 +17,18 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <img src="/images/banner.jpg" style="width: 350px; border-radius: 10px;">
+                <div class="img-detail-wrapper">
+                    <div class="img-brand">
+                        <img src="{{ asset('storage/bannerPacket/'.$packet->path_bannerpacket) }}" >
+                    </div>
+                </div>
             </div>
             <div class="col-8">
                 <div class="card">
+                    <form action="{{route('orderPacket')}}" method="post">
+                        @csrf
                     <div class="container" style="padding: 10px">
-                    <h3 class="text-tilte">Packet Umroh Murah</h3>
+                    <h3 class="text-tilte">{{$packet->packet_title}}h</h3>
                     <hr>
                     <div class="row">
                         <div class="card-item col-lg-2 col-md-2 col-sm-12">
@@ -30,9 +36,9 @@
                         </div>
                         <div class="card-item col-lg-10 col-md-10 col-sm-12">
                             <ul class="list-group">
-                                <li class="list-group-item">Manasik : 06/06/2020</li>
-                                <li class="list-group-item">Takeoff : 06/06/2020</li>
-                                <li class="list-group-item">Return : 06/06/2020</li>
+                                <li class="list-group-item">Manasik : {{$packet->detail->manasik_date}}</li>
+                                <li class="list-group-item">Takeoff :  {{$packet->detail->takeoff_date}}</li>
+                                <li class="list-group-item">Return :  {{$packet->detail->return_date}}</li>
                             </ul>
                         </div>
                     </div>
@@ -42,17 +48,17 @@
                             <h4 class="text-subtitle">Airline</h4>
                         </div>
                         <div class="card-item col-lg-10 col-md-10 col-sm-12">
-                            <p>Garuda</p>
+                            <p>{{$packet->airline->airlines_name}}</p>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="card-item col-lg-2 col-md-2 col-sm-12">
-                            <h4 class="text-subtitle">Price</h4>
+                            <h4 class="text-subtitle ">Price</h4>
 
                         </div>
                         <div class="card-item col-lg-10 col-md-10 col-sm-12">
-                           <h3 class="text-tilte">Rp 100.000.000</h3>
+                           <h3 class="text-tilte price">@currency(0)</h3>
                         </div>
                     </div>
                     <hr>
@@ -63,61 +69,40 @@
                         </div>
                         <div class="card-item col-lg-10 col-md-10 col-sm-12">
                             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                @for($i = 0 ; $i<3 ;$i++)
-
-                                <label class="btn btn-custom-outline">
-                                    <input type="radio" name="options" id="option1" > 1 Room 4 Poeple
+                                @foreach($packet->price as $price)
+                                <label id="{{$price->room->room_price}}" class="btn btn-custom-outline radio-price">
+                                    <input type="radio" name="price_id" id="room" value="{{$price->id}}" >{{$price->room->room_name}}
                                 </label>
-                                    @endfor
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="card-item col-lg-2 col-md-2 col-sm-12">
-                            <h4 class="text-subtitle">Description</h4>
-                        </div>
-                        <div class="card-item col-lg-10 col-md-10 col-sm-12">
-                           <p class="text-justify">Assalamualaikum, Sobat Serbakuis! Bagi kalian yang ingin menjalankan umroh di bulan Ramadan tahun ini, beli saja paket perjalanannya lewat Blibli, karena telah disediakan penawaran spesial berupa hadiah Yamaha Mio S! Baca syarat dan ketentuannya terlebih dahulu di bawah ini ya!</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="card-item col-lg-2 col-md-2 col-sm-12">
-                            <h4 class="text-subtitle">Note</h4>
-                        </div>
-                        <div class="card-item col-lg-10 col-md-10 col-sm-12">
-                            <p class="text-justify">Assalamualaikum, Sobat Serbakuis! Bagi kalian yang ingin menjalankan umroh di bulan Ramadan tahun ini, beli saja paket perjalanannya lewat Blibli, karena telah disediakan penawaran spesial berupa hadiah Yamaha Mio S! Baca syarat dan ketentuannya terlebih dahulu di bawah ini ya!</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="card-item col-lg-6 col-md-6 col-sm-12 d-flex justify-content-center">
-                            <div class="col-auto">
-                            <div class="input-group">
-                                  <span class="input-group-btn">
-                                      <button type="button" onclick="count('minus')" id="btn-number" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">
-                                        <span class="nav-icon fa fa-minus-square"></span>
-                                      </button>
-                                  </span>
-                                    <input type="number" id="counter" name="quant[2]" class="text-center" style="width: 100px;" value="1" min="1" max="100" disabled>
-                                    <span class="input-group-btn">
-                                      <button type="button" onclick="count('add')" id="btn-number" met class="btn btn-success btn-number" data-type="plus" data-field="quant[2]">
-                                          <span class="nav-icon fa fa-plus-square"></span>
-                                      </button>
-                                  </span>
-                                </div>
+                        <div class="row">
+                            <div class="card-item col-lg-2 col-md-2 col-sm-12">
+                                <h4 class="text-subtitle">Description</h4>
+                            </div>
+                            <div class="card-item col-lg-10 col-md-10 col-sm-12">
+                               <p class="text-justify">{{$packet->packet_desc}}</p>
                             </div>
                         </div>
-                        <div class="card-item col-lg-6 col-md-6 col-sm-12">
-                            <div class="row">
-                                <div class="col-6 d-flex justify-content-center">
-                                   <a href="/purchase"  class="btn btn-custom-secondry btn-block">Order</a>
-                                </div>
+                        <hr>
+                        <div class="row">
+                            <div class="card-item col-lg-2 col-md-2 col-sm-12">
+                                <h4 class="text-subtitle">Note</h4>
+                            </div>
+                            <div class="card-item col-lg-10 col-md-10 col-sm-12">
+                                <p class="text-justify">{{$packet->note}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button type="submit"  class="btn btn-custom-secondry btn-lg">Order</button>
                             </div>
                         </div>
                     </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -134,5 +119,15 @@
         }
         document.getElementById('counter').value = total;
     }
+
+    $('.radio-price').click(function () {
+        var price = $(this).attr('id');
+        const id =  $('#'+price+' input').val();
+        var	reverse = price.toString().split('').reverse().join(''),
+            idr 	= reverse.match(/\d{1,3}/g);
+        idr	= idr.join('.').split('').reverse().join('');
+        $('.price').html("Rp. "+idr);
+        $('#price_id').val(id);
+    })
 </script>
 @endpush

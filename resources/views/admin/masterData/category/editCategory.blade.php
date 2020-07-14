@@ -20,20 +20,26 @@
         <div class="col-md-8 col-lg-10">
             <div class="card">
                 <div class="card-header">Create Category</div>
-
                 <div class="card-body">
-                    <form>
+                    <form action="{{route('updateCategory',['id'=> $category->id])}}" method="post">
+                        @csrf
+                        @method('put')
                         {{-- Title --}}
                         <div class="form-group">
                             <label for="inputEmail4">Name Category</label>
-                            <input type="text" class="form-control" id="inputEmail4" placeholder="Name Category">
+                            <input name="category_name" type="text" class="form-control" id="inputEmail4" value="{{$category->category_name}}" >
                         </div>
                         {{-- Status --}}
                         <div class="form-group">
+                            <label for="inputEmail4">Current Status</label>
+                            <input name=""  disabled type="text" class="form-control" id="inputEmail4" value="{{$category->status->status_name}}" >
+                        </div>
+                        <div class="form-group">
                             <label for="exampleFormControlSelect1">Status</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>activated</option>
-                                <option>inactivated</option>
+                            <select name="status_id" class="form-control" id="exampleFormControlSelect1">
+                                @foreach($status as $st)
+                                    <option value="{{$st->id}}">{{$st->status_name}}</option>
+                                    @endforeach
                             </select>
                         </div>
                         <button type="submit" id="submit" class="btn btn-primary" value="update">Save</button>

@@ -4,25 +4,15 @@
 @section('content')
     <div class="payment-confirm">
         {{--Toast --}}
-        <div class="position-relative w-100 d-flex flex-column p-4">
-            <div class="toast ml-auto" role="alert" data-delay="700" data-autohide="false" >
-                <div class="toast-header">
-                    <strong class="mr-auto text-primary">Toast</strong>
-                    <small class="text-muted">3 mins ago</small>
-                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="toast-body bg-success"> Payment Confirm Success </div>
-            </div>
-        </div>
         <div class="container ">
+            @include('alerts.alert')
             <div class="card">
                 <div class="detail-payment text-center">
                     <h4>Jumlah yang harus dibayar</h4>
-                    <h2>Rp.100.000.000</h2>
+                    <h2>@currency($payment->nominal)</h2>
                     <h3>Waktu Pembayaran</h3>
-                    <h3>12:24:34</h3>
+                    <h3 id="count"></h3>
+                    <div data-countdown="2016/01/01"></div>
                 </div>
             </div>
             <div class="card">
@@ -36,7 +26,7 @@
                             :
                         </div>
                         <div class="col-auto">
-                            <p>Mandiri</p>
+                            <p>{{$payment->bank->bank_name}}</p>
                         </div>
                     </div>
                     <div class="row mp-group pl-3 mb-2">
@@ -47,7 +37,7 @@
                             :
                         </div>
                         <div class="col-auto">
-                            <p>08080</p>
+                            <p>{{$payment->bank->bank_code}}</p>
                         </div>
                     </div>
                     <div class="row mp-group pl-3 mb-2">
@@ -57,8 +47,9 @@
                         <div class="col-auto">
                             :
                         </div>
+                        @foreach($payment->bank->rekening as $rk)
                         <div class="col-auto">
-                            <p>000000000</p>
+                            <p>{{$rk->norekening}}</p>
                         </div>
                     </div>
                     <div class="row mp-group pl-3 mb-2">
@@ -69,22 +60,29 @@
                             :
                         </div>
                         <div class="col-auto">
-                            <p>Toko</p>
+                            <p>{{$rk->rekening_name}}</p>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="card">
+            <div class="card pb-3">
                 <div class="method-payment">
                     <h4 class="p-3 ">Status Payment</h4>
-                    <p class="pl-4">Sudah Bayar</p>
+                    @if($payment->paymentConfirm == '')
+                    <p class="pl-4" id="status">Belum Bayar</p>
+                        @else()
+                        <p class="pl-4" id="status">{{$payment->paymentConfirm->status->status_name}}</p>
+                    @endif
                 </div>
             </div>
+
             <div class="text-center">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal_confirm">
+                <button type="button" class="btn btn-success" id="btn-confirm" data-toggle="modal" data-target="#modal_confirm" hidden>
                     Payment Confirm
                 </button>
             </div>
+
         </div>
     </div>
     <!-- Modal jamaah -->
@@ -97,49 +95,126 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form role="form" id="paymentConfirm" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <form>
+                            @csrf
+                        <input type="hidden" name="payment_id" value="{{$payment->id}}">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Bank</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>BCA</option>
-                                    <option>Mandiri</option>
+                                <select name="bank_id" class="form-control" id="exampleFormControlSelect1">
+                                    @foreach($banks as $bank)
+                                    <option value="{{$bank->id}}">{{$bank->bank_name}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Card Number</label>
-                                <input type="number" class="form-control" id="" placeholder="08080808">
+                                <label for="">Rekening Number</label>
+                                <input name="norekening" type="number" class="form-control" id="" placeholder="08080808" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Name</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Alwan">
+                                <label for="exampleFormControlInput1">Rekening Name</label>
+                                <input name="rekening_name" type="text" class="form-control"placeholder="" required>
                             </div>
-                           <div class="form-group">
-                               <label for="">Photo Invoice</label>
-                               <div class="input-group mb-3">
-                                   <div class="custom-file">
-                                       <input type="file" class="custom-file-input" id="inputGroupFile02">
-                                       <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-                                   </div>
-                               </div>
-                           </div>
-                        </form>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">Photo Transfer</label>
+                                <input id="photo" name="photo" type="file" class="form-control-file" required>
+                            </div>
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
-                        <button type="button" id="save" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                        <button type="submit" id="save" class="btn btn-success">Submit</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
 @endsection
 @push('js')
     <script>
+
+
         $(document).ready(function(){
-            $('#save').click(function () {
-                $(".toast").toast('show');
-                $('#modal_confirm').modal('hide');
+
+            var statusPayment = document.getElementById('status').innerText;
+            if (statusPayment == "Belum Bayar") {
+                $('#btn-confirm').removeAttr('hidden');
+                CountDownTimerExpire('{{$payment->created_at}}', 'count');
+            }else {
+                document.getElementById('count').innerHTML = '<b>'+statusPayment+'</b> ';
+            }
+
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
+
+            $('#paymentConfirm').submit(function (e) {
+                e.preventDefault();
+                console.log('bisa');
+                var dataForm = new FormData(this);
+                var file = $('#photo')[0].files[0];
+                dataForm.append('file',file,'photo');
+                console.log(dataForm);
+                  $.ajax({
+                    type:"POST",
+                    url :"{{route('paymentConfirm')}}",
+                    data:dataForm,
+                      processData: false,
+                      contentType: false,
+                      dataType: 'json',
+                    success:function (response) {
+
+                        location.reload();
+                        return false;
+
+                    }
+                });
+
             })
+
         });
+
+        function CountDownTimerExpire(dt, id)
+        {
+            var end = new Date('{{\Carbon\Carbon::parse($payment->created_at)->addDay()->toDateTimeString()}}');
+            var _second = 1000;
+            var _minute = _second * 60;
+            var _hour = _minute * 60;
+            var _day = _hour * 24;
+            var timer;
+            function showRemaining() {
+                var now = new Date();
+                var distance = end - now;
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById(id).innerHTML = '<b>Expired</b> ';
+                    $.ajax({
+                        type:"GET",
+                        dataType:'json',
+                        url :"{{route('paymentExpired',['id'=>$payment->id])}}",
+                        data: {'token' :'{!! csrf_token() !!}'},
+                        contentType: false,
+                        processData: false,
+                        success:function (response) {
+                         onload(this);
+                        }
+                    });
+
+                    return;
+                }
+
+                var hours = Math.floor((distance % _day) / _hour);
+                var minutes = Math.floor((distance % _hour) / _minute);
+                var seconds = Math.floor((distance % _minute) / _second);
+
+                document.getElementById(id).innerHTML = hours + 'hrs ';
+                document.getElementById(id).innerHTML += minutes + 'mins ';
+                document.getElementById(id).innerHTML += seconds + 'secs';
+
+            }
+            timer = setInterval(showRemaining, 1000);
+        }
     </script>
 @endpush

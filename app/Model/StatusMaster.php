@@ -20,11 +20,11 @@ class StatusMaster extends Model
         return $this->hasMany('App\Agent');
     }
 
-    public function agentType(){
+    public function gtype(){
         return $this->hasMany('App\AgentType');
     }
 
-    public function paymentMethod(){
+    public function method(){
         return $this->hasMany('App\PaymentMethod');
     }
 
@@ -44,12 +44,12 @@ class StatusMaster extends Model
         return $this->hasMany('App\Airline');
     }
 
-    public function roomType(){
+    public function room(){
         return $this->hasMany('App\RoomType');
     }
 
     public function price(){
-        return $this->hasMany('App\Price');
+        return $this->hasMany('App\Price','status_id');
     }
 
     public function packet(){

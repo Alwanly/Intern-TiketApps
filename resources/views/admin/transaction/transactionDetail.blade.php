@@ -24,27 +24,29 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" disabled id="inputEmail4" placeholder="email@email.com">
+                            <label for="inputEmail4">Name</label>
+                            <input type="text" class="form-control" disabled id="inputEmail4" placeholder="{{$transaction->user->name}}">
                         </div>
                         <div class="form-group">
                             <label for="inputEmail4">Packet</label>
-                            <input type="text" class="form-control" disabled id="inputEmail4" placeholder="Packet">
+                            <input type="text" class="form-control" disabled id="inputEmail4" placeholder="{{$transaction->packet->packet_title}}">
                         </div>
                         <div class="form-group">
+
                             <label>Payment with Bank</label>
                             <div class="form-row">
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <input type="text" class="form-control"  disabled id="inputCity" placeholder="BCA">
+                                    <input type="text" class="form-control"  disabled id="inputCity" placeholder="{{$transaction->payment->bank->bank_name}}">
                                 </div>
                             </div>
+
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Status</label>
-                            <input type="text" class="form-control" disabled id="inputCity" placeholder="Sudah Dibayar">
+                            <input type="text" class="form-control" disabled id="inputCity" placeholder="{{$transaction->status->status_name}}">
                         </div>
                         <div class="form-group">
-                            <a href="{{route('paymentDetail',['id'=>1])}}" class="text-primary breadcrumb-item active"><u>Payment</u></a>
+                            <a href="{{route('paymentDetail',['id'=>$transaction->payment->id])}}" class="text-primary breadcrumb-item active"><u>Payment</u></a>
                         </div>
                     </div>
                 </div>
@@ -52,15 +54,7 @@
                     <div class="card-header">
                         <h3 class="card-title">List Jamaah</h3>
 
-                        {{--<div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div>--}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -75,17 +69,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @for($i = 0 ; $i < 5 ; $i++)
+                            <?php $i = 1 ?>
+                                @foreach($transaction->detail as $jamah)
                                     <tr>
-                                        <td>{{$i+1}}</td>
-                                        <td>John Doe</td>
-                                        <td>11-7-2014</td>
-                                        <td><span class="tag tag-success">Approved</span></td>
-                                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                        <td>{{$i++}}</td>
+                                        <td>{{$jamah->jamaah_name}}</td>
+                                        <td>{{$jamah->jamaah_gender}}</td>
+                                        <td>{{$jamah->jamaah_telephone}}</td>
+                                        <td><button type="button" class="btn btn-primary modal-view" data-name="{{$jamah->jamaah_name}}" data-toggle="modal" data-img="{{$jamah->jamaah_path_photoktp}}" data-target="#viewKtp">
                                                View KTP
                                             </button></td>
                                     </tr>
-                                @endfor
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -95,21 +90,34 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="viewKtp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Name Jamaah</h5>
+                    <h5 class="modal-title" id="name-jamaah">Name Jamaah</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="/images/pkaet.jpg"  class="img-thumbnail" >
+                    <div class="wrapper-ktp d-flex justify-content-center align-items-center">
+                        <div class="wrapper-ktp-img" >
+                            <img  id="ktpJamaah" class="img-thumbnail" >
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @push('js')
+    <script>
+        $('.modal-view').on('click',function () {
+            var name = $(this).data('name');
+            var dataImg = $(this).data('img');
+            var img =" {{asset('storage/ktpJamaah/')}}"+"/"+dataImg;
+            $('#ktpJamaah').attr('src',img);
+            document.getElementById('name-jamaah').innerHTML=name;
+        })
+    </script>
 @endpush

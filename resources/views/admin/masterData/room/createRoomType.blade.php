@@ -19,21 +19,33 @@
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-10">
                 <div class="card">
-                    <div class="card-header">Create Airlines</div>
+                    <div class="card-header">Create Room Type</div>
 
                     <div class="card-body">
-                        <form>
-                            {{-- Title --}}
+                        <form action="{{route('storeRoom')}}" method="post">
+                            @csrf
+                            {{-- Room --}}
                             <div class="form-group">
-                                <label for="inputEmail4">Name Airlines</label>
-                                <input type="text" class="form-control" id="inputEmail4" placeholder="Name Airlines">
+                                <label for="inputEmail4">Name Room</label>
+                                <input type="text" name="room_name" class="form-control" id="inputEmail4" placeholder="Name Room">
+                            </div>
+                            {{-- Capacity --}}
+                            <div class="form-group">
+                                <label for="inputEmail4">Capacity</label>
+                                <input type="number" name="room_capacity" class="form-control" id="inputEmail4" placeholder="Capacity">
+                            </div>
+                            {{-- Price --}}
+                            <div class="form-group">
+                                <label for="inputEmail4">Price</label>
+                                <input type="number" name="room_price" class="form-control" id="inputEmail4" placeholder="Price">
                             </div>
                             {{-- Status --}}
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Status</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>activated</option>
-                                    <option>inactivated</option>
+                                <select name="status_id" class="form-control" id="exampleFormControlSelect1">
+                                    @foreach($status as $st)
+                                        <option value="{{$st->id}}">{{$st->status_name}}</option>
+                                        @endforeach
                                 </select>
                             </div>
                             <button type="submit" id="submit" class="btn btn-primary" value="update">Save</button>

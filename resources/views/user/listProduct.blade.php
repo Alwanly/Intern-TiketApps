@@ -87,39 +87,27 @@
 {{--            </div>--}}
             <div class="col-lg-12 col-md-6 col-sm-12">
                 <div class="row">
-                    @for($i = 0 ; $i < 12 ;$i++)
-                    <div class="col-lg-4 d-flex justify-content-center">
-                        <div class="card card-product" onclick="location.href='{{ url('/listPacket/detail') }}'" >
-                            <img class="card-img-top img-brand" src="/images/pkaet.jpg" alt="Card image cap">
-                            <div class="card-body pl-4">
-                                <h5 class="card-title col-12">Packet Umroh title</h5>
-                                <p class="card-text col-12"> <i class="nav-icon fas fa-calendar-alt"></i> 2020 </p><br>
-                                <p class="card-text col-12"> <b class="nav-icon">Rp</b> 10.000.000</p>
+                    @foreach($packets as $packet)
+                        <div class="col-lg-4 d-flex justify-content-center p-3">
+                            <div class="card card-product" onclick="location.href='{{ route('detailPacket',['id'=>$packet->id]) }}'"  >
+                                <div class="img-brand">
+                                    <img class="card-img-top" src="{{ asset('storage/bannerPacket/'.$packet->path_bannerpacket) }}" alt="Card image cap">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$packet->packet_title}}</h5>
+                                    <hr>
+                                    <p class="card-text"> <i class="nav-icon fas fa-calendar-alt"></i> {{$packet->detail->takeoff_date}} </p>
+                                    <hr>
+                                    <p class="card-text"> <b class="nav-icon">Rp</b> {{$packet->price[0]->room->room_price}}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    @endfor
+                    @endforeach
                 </div>
                 <div class="row justify-content-center ">
                     <nav aria-label="Page navigation example">
                         <div class="col-12 text-center">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="fas fa-arrow-left"></i> </span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            {{$packets->links()}}
                         </div>
                     </nav>
                 </div>

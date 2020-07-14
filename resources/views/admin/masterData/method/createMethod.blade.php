@@ -1,6 +1,7 @@
 @extends('layouts.appAdmin')
 
 @section('content')
+
 <div class="container">
     <div class="content-header">
         <div class="container-fluid">
@@ -19,32 +20,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-10">
             <div class="card">
-                <div class="card-header">Create Bank</div>
+                <div class="card-header">Create Method Payment</div>
 
                 <div class="card-body">
-                    <form action="{{route('storeBank')}}" method="post">
+                    <form action="{{route('store.Method')}}" method="post">
                         @csrf
-                        {{-- Bank --}}
+                        {{-- Title --}}
                         <div class="form-group">
-                            <label for="inputEmail4">Code Bank</label>
-                            <input name="bank_code" type="text" class="form-control" id="inputEmail4" placeholder="Name Category">
+                            <label for="inputEmail4">Name Method</label>
+                            <input type="text" name="payment_name" class="form-control" id="inputEmail4" placeholder="Name Method">
                         </div>
-                        {{-- Bank --}}
-                        <div class="form-group">
-                            <label for="inputEmail4">Name Bank</label>
-                            <input name="bank_name" type="text" class="form-control" id="inputEmail4" placeholder="Name Category">
-                        </div>
-
-                        {{-- Payment Method --}}
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Payment Method</label>
-                            <select name="method_id" class="form-control" id="exampleFormControlSelect1">
-                                    @foreach($methods as $m)
-                                    <option value="{{$m->id}}">{{$m->payment_name}}</option>
-                                    @endforeach
-                            </select>
-                        </div>
-
                         {{-- Status --}}
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Status</label>
