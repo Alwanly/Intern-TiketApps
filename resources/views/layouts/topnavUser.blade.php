@@ -25,23 +25,23 @@
                                                 </li>
                                             @endif
                 @else
-                    <li class="nav-item {{(request()->is('home')) ? 'active' : ''}}">
-                        <a class="nav-link" href="/home">
+                    <li class="nav-item {{(request()->is('*home*')) ? 'active' : ''}}">
+                        <a class="nav-link" href="{{route('home')}}">
                             <i class="nav-icon fas fa-home"></i><br>Home
                         </a>
                     </li>
-                    <li class="nav-item {{(request()->is('purchase/list')) ? 'active' : ''}} ">
+                    <li class="nav-item {{(request()->is('*purchase-list*')) ? 'active' : ''}} ">
                         <a class="nav-link " href="{{route('purchaseShow',['id'=>0])}}">
                             <i class="nav-icon fas fa-credit-card"></i><br>Transaction
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown  {{(request()->is('*account*')) ? 'active' : ''}} ">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <i class="nav-icon fas fa-user-circle"></i><br>Account<span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/account/profile">
+                            <a class="dropdown-item" href="{{route('account')}}">
                                 {{ Auth::user()->name }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"

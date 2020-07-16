@@ -27,27 +27,22 @@
                         <tr role="row">
                             <th>No</th>
                             <th>Email</th>
+                            <th>Type Agent</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @for($i = 0; $i < 3 ;$i++ )
+                        <?php $i = 1 ?>
+                        @foreach($agents as $ag)
                             <tr>
-                                <td>{{$i+1}}</td>
-                                <td>test@mail.com</td>
-                                <td>Waiting</td>
-                                <td><a href="{{route('agentDetail',['id'=>$i])}}" class="btn btn-outline-primary btn-sm">Detail <i class="fas fa-search"></i> </a></td>
+                                <td>{{$i++}}</td>
+                                <td>{{$ag->user->email}}</td>
+                                <td>{{$ag->type->title}}</td>
+                                <td>{{$ag->status->status_name}}</td>
+                                <td><a href="{{route('agentDetail',['id'=>$ag->id])}}" class="btn btn-outline-primary btn-sm">Detail <i class="fas fa-search"></i> </a></td>
                             </tr>
-                        @endfor
-                        @for($i = 3; $i < 11 ;$i++ )
-                            <tr>
-                                <td>{{$i+1}}</td>
-                                <td>test@mail.com</td>
-                                <td>Accept</td>
-                                <td><a href="{{route('agentDetail',['id'=>$i])}}" class="btn btn-outline-primary btn-sm">Detail <i class="fas fa-search"></i> </a></td>
-                            </tr>
-                        @endfor
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

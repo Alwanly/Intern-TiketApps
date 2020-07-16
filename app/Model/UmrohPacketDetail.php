@@ -14,4 +14,5 @@ class UmrohPacketDetail extends Model
     public function packet(){
         return $this->belongsTo('App\UmrohPacket','packet_id','id');
     }
+
 }

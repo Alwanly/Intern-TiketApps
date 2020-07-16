@@ -7,7 +7,7 @@ html, body{
     box-sizing: border-box !important;
 }
 .wrapper-content{
-    min-height: 80vh;
+    min-height: 90vh;
 }
 
 .section{
@@ -367,9 +367,9 @@ html, body{
     display: inline;
 }
 .list-group--custom-item{
-    margin: 1rem;
+    margin: 0.3rem;
     font-weight: bolder;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 .detail-user-account.detail-user-profile{
     margin-bottom: 2rem;

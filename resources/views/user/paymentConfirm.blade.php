@@ -140,12 +140,6 @@
                 document.getElementById('count').innerHTML = '<b>'+statusPayment+'</b> ';
             }
 
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     }
-            // });
-
             $('#paymentConfirm').submit(function (e) {
                 e.preventDefault();
                 console.log('bisa');

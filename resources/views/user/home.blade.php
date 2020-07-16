@@ -29,10 +29,10 @@
                                 </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{$packet->packet_title}}</h5><br>
-                                <hr>
-                                <p class="card-text"> <i class="nav-icon fas fa-calendar-alt"></i> {{$packet->detail->takeoff_date}} </p>
-                                <hr>
-                                <p class="card-text"> <b class="nav-icon">Rp</b> {{$packet->price[0]->room->room_price}}</p>
+                                <br>
+                                <p class="card-text"> <i class="nav-icon fas fa-calendar-alt"></i> @dateFormat($packet->detail->takeoff_date) </p>
+                                <br>
+                                <p class="card-text"> @currency($packet->price[0]->room->room_price)</p>
                             </div>
                         </div>
                     </div>

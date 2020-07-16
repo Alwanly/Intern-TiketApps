@@ -8,8 +8,12 @@ class Agent extends Model
 {
     protected $table='agents';
 
-    public function agenttype(){
-        return $this->belongsTo('App\AgentType');
+    protected $fillable =
+        ['user_id','agent_type_id','code_agent','bank_id',
+            'norekening','name_rekening', 'path_photoktp','status_id'];
+
+    public function type(){
+        return $this->belongsTo('App\AgentType','agent_type_id','id');
     }
     public function bank(){
         return $this->belongsTo('App\BankMaster');

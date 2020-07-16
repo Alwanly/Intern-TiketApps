@@ -23,37 +23,37 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{route('dashboard')}}" class="nav-link {{(request()->is('dashboard')) ? 'active':''}}">
+                    <a href="{{route('dashboard')}}" class="nav-link {{(request()->is('*dashboard')) ? 'active':''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>DashBoard</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('packetList')}}" class="nav-link {{(request()->is('packet*')) ? 'active':''}}">
+                    <a href="{{route('packetList')}}" class="nav-link {{(request()->is('*packet*')) ? 'active':''}}">
                         <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>Packet Umroh</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('paymentList')}}" class="nav-link {{(request()->is('payment*')) ? 'active':''}}">
+                    <a href="{{route('paymentList')}}" class="nav-link {{(request()->is('*payment*')) ? 'active':''}}">
                         <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>Payment</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('transactionList')}}" class="nav-link {{(request()->is('/transaction*')) ? 'active':''}}{{(request()->is('transaction*')) ? 'active':''}}">
+                    <a href="{{route('transactionList')}}" class="nav-link {{(request()->is('*transaction*')) ? 'active':''}}{{(request()->is('transaction*')) ? 'active':''}}">
                         <i class="nav-icon fas fa-receipt"></i>
                         <p>Transaction</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('agentList')}}" class="nav-link {{(request()->is('agents*')) ? 'active':''}}">
+                    <a href="{{route('agentList')}}" class="nav-link {{(request()->is('*agents*')) ? 'active':''}}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Agent</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('masterData')}}" class="nav-link {{(request()->is('master_data*')) ? 'active':''}}">
+                    <a href="{{route('masterData')}}" class="nav-link {{(request()->is('*master_data*')) ? 'active':''}}">
                         <i class="nav-icon fas fa-database"></i>
                         <p>Master Data</p>
                     </a>

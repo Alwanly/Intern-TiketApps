@@ -17,7 +17,7 @@ class isAdmin
      */
     public function handle($request, Closure $next)
     {
-        Log::info('sdsds');
+
         $user = Auth::user();
         if ($user->role->role != 'admin') {
             return abort(404);
