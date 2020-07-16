@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-body">
                     <div class="col-12 table-responsive -border-none">
-                        <table id="tableTR" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                        <table id="transactionTable" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                             <thead>
                             <tr role="row">
                                 <th>No</th>
@@ -49,7 +49,6 @@
                             </tbody>
                         </table>
                     </div>
-
          {{-- <div class="row">
                         <div class="col-sm-12 col-md-5">
                             <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing {{ $transactions->firstItem() }} to {{ $transactions->lastItem() }} of total {{$transactions->total()}} entries</div>
@@ -65,8 +64,7 @@
 @push('js')
     <script>
         $(document).ready( function () {
-            $('#tableTR').DataTable(function () {
-
+            $('#transactionTable').DataTable(function () {
             });
         } );
     </script>

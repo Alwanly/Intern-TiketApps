@@ -3,7 +3,6 @@
 @section('content')
     <div class="transaction-payment">
             <div class="container">
-
                     <div class="card">
                     <h4 class="text-title mb-3 pl-4 pr-4">Detail Packet Umroh</h4>
                     <div class="form-group mb-3 pl-4">
@@ -22,7 +21,7 @@
                         <h5 class="text-title text-bold">Data Jamaah</h5>
                         <div class="card-ktp">
                         @for($i = 0 ; $i < $price->room->room_capacity ;$i++)
-                            <div class="card col-lg-12 col-md-12 col-sm-12 bg-success">
+                            <div class="card col-lg-12 col-md-12 col-sm-12 ">
                                 <p class="text-bold">Jamaah {{$i+1}}</p>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Full Name</label>

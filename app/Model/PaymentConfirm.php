@@ -8,7 +8,7 @@ class PaymentConfirm extends Model
 {
     protected $table ='payment_confirms';
     protected $fillable =
-        ['payment_id','bank_id','norekening','rekening_name','path_photoproof','status_id'];
+        ['payment_id','bank_id','norekening','rekening_name','path_photoproof'];
     public function status(){
         return $this->belongsTo('App\StatusMaster');
     }

@@ -6,6 +6,9 @@ html, body{
     scroll-behavior: smooth;
     box-sizing: border-box !important;
 }
+.wrapper-content{
+    min-height: 80vh;
+}
 
 .section{
     width: 100%;
@@ -122,6 +125,7 @@ html, body{
     box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 }
 
+
 .list-group-item-filter{
     padding: 0 0 0 10px ;
     border-style: solid;
@@ -168,8 +172,6 @@ html, body{
 }
 .transaction-payment{
     padding: 0 20% 0 20%;
-}
-.card-ktp p{
 }
 .detail-payment h4,.detail-payment h2{
     color: #009688 ;

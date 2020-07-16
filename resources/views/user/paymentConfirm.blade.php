@@ -69,11 +69,7 @@
             <div class="card pb-3">
                 <div class="method-payment">
                     <h4 class="p-3 ">Status Payment</h4>
-                    @if($payment->paymentConfirm == '')
-                    <p class="pl-4" id="status">Belum Bayar</p>
-                        @else()
-                        <p class="pl-4" id="status">{{$payment->paymentConfirm->status->status_name}}</p>
-                    @endif
+                    <p class="pl-4" id="status">{{$payment->status->status_name}}</p>
                 </div>
             </div>
 
@@ -137,7 +133,7 @@
         $(document).ready(function(){
 
             var statusPayment = document.getElementById('status').innerText;
-            if (statusPayment == "Belum Bayar") {
+            if (statusPayment == "Belum dibayar" || statusPayment == "Pembayaran Ditolak"  ) {
                 $('#btn-confirm').removeAttr('hidden');
                 CountDownTimerExpire('{{$payment->created_at}}', 'count');
             }else {
@@ -165,10 +161,8 @@
                       contentType: false,
                       dataType: 'json',
                     success:function (response) {
-
                         location.reload();
-                        return false;
-
+                        return false
                     }
                 });
 
@@ -186,8 +180,8 @@
             var timer;
             function showRemaining() {
                 var now = new Date();
-                var distance = end - now;
-                if (distance < 0) {
+                var deadline = end - now;
+                if (deadline < 0) {
                     clearInterval(timer);
                     document.getElementById(id).innerHTML = '<b>Expired</b> ';
                     $.ajax({
@@ -198,16 +192,15 @@
                         contentType: false,
                         processData: false,
                         success:function (response) {
-                         onload(this);
+                         location.reload();
                         }
                     });
-
                     return;
                 }
 
-                var hours = Math.floor((distance % _day) / _hour);
-                var minutes = Math.floor((distance % _hour) / _minute);
-                var seconds = Math.floor((distance % _minute) / _second);
+                var hours = Math.floor((deadline % _day) / _hour);
+                var minutes = Math.floor((deadline % _hour) / _minute);
+                var seconds = Math.floor((deadline % _minute) / _second);
 
                 document.getElementById(id).innerHTML = hours + 'hrs ';
                 document.getElementById(id).innerHTML += minutes + 'mins ';

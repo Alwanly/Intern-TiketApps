@@ -22,6 +22,6 @@ class Price extends Model
     }
 
     public function transaction(){
-        return $this->hasMany('App\Transaction');
+        return $this->belongsTo('App\Transaction','transaction_id','id');
     }
 }

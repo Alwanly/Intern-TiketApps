@@ -17,21 +17,23 @@ class PaymentController extends Controller
 
     public function detail($id){
         $payment = Payment::find($id);
-        return view('admin.payment.paymentDetail'
-        ,['payment'=> $payment]);
+
+        $paymentConfirm = PaymentConfirm::where('payment_id',$payment->id)->latest()->first();
+        return view('admin.payment.paymentDetail',[
+            'payment'=> $payment,
+            'paymentConfirm' => $paymentConfirm
+        ]);
     }
 
     public function update(Request $request){
         $status = $request->submit == "Accept"? 12 :13;
-        PaymentConfirm::find($request->id)->update([
+       Payment::find($request->id)->update([
             'status_id'=>$status,
         ]);
-        $payment =  PaymentConfirm::find($request->id);
-
-        $paymentId = $payment->payment->transaction->id;
-
+        $py = Payment::find($request->id);
+        $id = $py->transaction_id;
         if ($status == 12 ){
-            Transaction::find($paymentId)->update([
+            Transaction::find($id)->update([
                 'status_id' => 5
             ]);
         }

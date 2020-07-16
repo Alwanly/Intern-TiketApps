@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     public function index(){
-        $transactions = Transaction::paginate(10);
+        $transactions = Transaction::all();
         return view('admin.transaction.transactionList',['transactions'=>$transactions]);
     }
     public function detail($id){
@@ -28,11 +28,17 @@ class TransactionController extends Controller
         ]);
     }
     public function update(Request $request){
-        $packet = Transaction::where('packet_id',$request->packet)->whereNotIn('status_id',['4'])->update([
+        $status = Transaction::where('packet_id',$request->packet)->whereNotIn('status_id',['4'])->update([
             'status_id'=>$request->status
         ]);
 
-        if (!$packet) {
+        $packet = UmrohPacket::find($request->packet);
+
+        if ($request->status == 8){
+            $packet->update(['status_id' => 3]);
+        }
+
+        if (!$status) {
             $request->session()->flash('status', false);
             $request->session()->flash('message', 'Error Updates Data');
             return redirect()->route('masterData');

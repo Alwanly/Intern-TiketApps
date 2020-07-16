@@ -8,7 +8,7 @@ class Payment extends Model
 {
     protected $table = 'payments';
     protected $fillable =
-        ['transaction_id','bank_id','nominal'];
+        ['transaction_id','bank_id','nominal','status_id'];
 
     public function status(){
         return $this->belongsTo('App\StatusMaster');

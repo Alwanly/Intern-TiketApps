@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\User\PaymentController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class TransactionController extends Controller
 {
@@ -57,8 +58,44 @@ class TransactionController extends Controller
         $payment = Payment::create([
             'bank_id'=> $data['bank_id'],
             'transaction_id'=>$transaction,
-            'nominal' => $price->room->room_price
+            'nominal' => $price->room->room_price,
+            'status_id' => 10
         ]);
         return redirect()->route('paymentIndex',['id'=>$payment->id]);
+    }
+
+    public function showList($request){
+        $user_id = Auth::user()->id;
+        if ($request == 0){
+            $trs = Transaction::all();
+            $tabs = $request;
+        }
+        if ($request == 1){
+            $trs = Transaction::where('user_id',$user_id)->whereHas('payment',function (Builder $q){
+                $q->where('status_id','=',10);
+            })->get();
+
+            $tabs = $request;
+        }
+        if ($request == 2){
+            $trs = Transaction::where('user_id',$user_id)->whereHas('payment',function (Builder $q){
+                $q->where('status_id','=',11);
+            })->get();
+
+            $tabs = $request;
+        }
+        if ($request == 3){
+            $trs = Transaction::where('user_id',$user_id)->whereHas('payment',function (Builder $q){
+                $q->where('status_id','=',12);
+            })->get();
+
+            $tabs = $request;
+        }
+
+
+        return view('user.purchaseList',[
+            'trs' => $trs,
+            'tabs' => $tabs
+        ]);
     }
 }

@@ -22,7 +22,6 @@ class PaymentController extends Controller
     }
 
     public function confirm(Request $request){
-        $data = $request->all();
         $dateConfirm = Carbon::now()->toDateString();
         $time =  time();
 //
@@ -31,27 +30,30 @@ class PaymentController extends Controller
         $path = 'storage/photoTransfer';
 
         $file->move($path,$filname);
-        $payment = PaymentConfirm::create([
+        $paymentC = PaymentConfirm::create([
             'payment_id' => $request->payment_id,
             'bank_id' => $request->bank_id,
             'norekening' => $request->norekening,
             'rekening_name'=> $request->rekening_name,
             'path_photoproof' => $filname,
-            'status_id' => 11,
         ]);
+
+        $payment = Payment::find($paymentC->payment_id)->update(['status_id'=>11]);
 
         $request->session()->flash('status',true);
         $request->session()->flash('message','Payment Confirm Success');
-        return response()->json(['status',true]);
+        return response()->json(['status',$payment]);
     }
 
     public function expired($id, Request $request){
-        Payment::find($id)->update([
+        $status = Payment::find($id);
+
+        $status->update([
             'status_id'=> 15
         ]);
 
         return response()->json([
-            'status'=>true,
+            'status'=>$status,
             'message'=>'Pembayaran Expired']);
     }
 }

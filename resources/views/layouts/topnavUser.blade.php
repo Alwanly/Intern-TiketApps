@@ -31,7 +31,7 @@
                         </a>
                     </li>
                     <li class="nav-item {{(request()->is('purchase/list')) ? 'active' : ''}} ">
-                        <a class="nav-link " href="/purchase/list">
+                        <a class="nav-link " href="{{route('purchaseShow',['id'=>0])}}">
                             <i class="nav-icon fas fa-credit-card"></i><br>Transaction
                         </a>
                     </li>

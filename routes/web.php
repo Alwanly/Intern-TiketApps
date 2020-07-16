@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/user',"UserController@index");
 
 Auth::routes();
-Route::middleware(['isAdmin','auth'])->group(function (){
+Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function (){
     Route::get('/dashboard',"Admin\AdminController@index")->name('dashboard');
 
     Route::get('/packet',"Admin\PacketUmrohController@index")->name('packetList');
@@ -74,9 +74,10 @@ Route::middleware(['isAdmin','auth'])->group(function (){
     Route::get('/master_data/rekening/edit/{id}','Admin\MasterDataController@editRekening')->name('editRekening');
     Route::put('/master_data/rekening/update/{id}','Admin\MasterDataController@updateRekening')->name('updateRekening');
 });
+//* User Route *///
 Route::get('/home', 'User\HomeController@index')->name('home');
 Route::get('/listPacket','User\HomeController@show')->name('listPacket');
-Route::middleware(['isUser','auth'])->group(function (){
+Route::prefix('u')->middleware(['isUser','auth'])->group(function (){
 
     Route::get('/listPacket/detail/{id}','User\HomeController@detail')->name('detailPacket');
     Route::post('/order','User\TransactionController@index')->name('orderPacket');
@@ -86,14 +87,10 @@ Route::middleware(['isUser','auth'])->group(function (){
     Route::post('/payment/confirm','User\PaymentController@confirm')->name('paymentConfirm');
     Route::get('/payment/expired/{id}','User\PaymentController@expired')->name('paymentExpired');
 
-});
-Route::get('/purchase',function (){
-    return view('user.transaction');
+    Route::get('/purchase-list/{id}','User\TransactionController@showList')->name('purchaseShow');
+
 });
 
-Route::get('/purchase/payment',function (){
-    return view('user.paymentConfirm');
-});
 
 Route::get('/purchase/list',function (){
     return view('user.purchaseList');

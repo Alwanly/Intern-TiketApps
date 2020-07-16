@@ -19,13 +19,21 @@
 
 </head>
 <body class="">
-<div id="app">
-   @include('layouts.topnavUser')
-    <main class="py-4">
+<div id="app" >
+    <header>
+        @include('layouts.topnavUser')
+    </header>
+
+    <main class="wrapper-content py-4">
         @yield('content')
     </main>
+
+    <footer class="bottom-0">
+        @include('layouts.footer')
+    </footer>
+
 </div>
-@include('layouts.footer')
+
 <script src="/js/app.js"></script>
 <script src="/js/menu.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
