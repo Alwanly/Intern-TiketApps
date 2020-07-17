@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         //Format Date indonesia
-        Blade::directive('dateFormat',function ($request){
+        Blade::directive('idDate',function ($request){
             $date = strtotime($request);
             return Carbon::parse($date)->translatedFormat('l, d M Y');
         });

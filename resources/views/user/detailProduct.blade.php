@@ -25,7 +25,7 @@
             </div>
             <div class="col-8">
                 <div class="card">
-                    <form action="{{route('orderPacket')}}" method="post">
+                    <form action="{{route('orderPacket')}}" method="get">
                         @csrf
                     <div class="container" style="padding: 10px">
                     <h3 class="text-tilte">{{$packet->packet_title}}h</h3>
@@ -36,9 +36,9 @@
                         </div>
                         <div class="card-item col-lg-10 col-md-10 col-sm-12">
                             <ul class="list-group">
-                                <li class="list-group-item">Manasik : {{$packet->detail->manasik_date}}</li>
-                                <li class="list-group-item">Takeoff :  {{$packet->detail->takeoff_date}}</li>
-                                <li class="list-group-item">Return :  {{$packet->detail->return_date}}</li>
+                                <li class="list-group-item">Manasik : {{$packet->detail->getDateManasik()}}</li>
+                                <li class="list-group-item">Takeoff :  {{$packet->detail->getDateTakeoff()}}</li>
+                                <li class="list-group-item">Return :  {{$packet->detail->getDateReturn()}}</li>
                             </ul>
                         </div>
                     </div>

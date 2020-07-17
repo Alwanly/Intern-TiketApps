@@ -100,10 +100,11 @@ Route::prefix('u')->group(function (){
 
     //Routes auth
     Route::middleware(['isUser','auth'])->group(function (){
-        //order
-        Route::post('/order','User\TransactionController@index')->name('orderPacket');
-        Route::post('/order/purchase','User\TransactionController@store')->name('orderStore');
 
+        //Transaction order
+        Route::get('/order','User\TransactionController@index')->name('orderPacket');
+        Route::post('/order/purchase','User\TransactionController@store')->name('orderStore');
+        Route::post('/checkCodeAgent','User\TransactionController@checkCodeAgent')->name('checkCodeAgent');
         //payment
         Route::get('/payment/{id}','User\PaymentController@index')->name('paymentIndex');
         Route::post('/payment/confirm','User\PaymentController@confirm')->name('paymentConfirm');

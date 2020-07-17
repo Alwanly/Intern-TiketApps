@@ -11,7 +11,7 @@ class Payment extends Model
         ['transaction_id','bank_id','nominal','status_id'];
 
     public function status(){
-        return $this->belongsTo('App\StatusMaster');
+        return $this->belongsTo('App\StatusMaster','status_id','id');
     }
 
     public function bank(){

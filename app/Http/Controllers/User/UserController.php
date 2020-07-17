@@ -65,26 +65,22 @@ class UserController extends Controller
     public function update(Request $request){
         $id = Auth::id();
 
-        $status = App\User::find($id)->update(['name'=>$request->name]);
+        $status = App\User::find($id)->update(['name'=>$request->name,'telephone'=>$request->phone]);
         if ($status) {
 
             if ($request->hasFile('file')){
-            $file = $request->file('file');
-            $filname = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
-            $path = 'storage/profile';
-            $file->move($path, $filname);
-            $userdetail = App\UserDetail::where('user_id', $id)->update([
-                'path_photoprofile' => $filname
-            ]);
-
-            }
+                $file = $request->file('file');
+                $filname = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
+                $path = 'storage/profile';
+                $file->move($path, $filname);
                 $userdetail = App\UserDetail::where('user_id', $id)->update([
-                    'gender' => $request->gender,
-                    'telephone' => $request->phone,
-                    'address' => $request->address
+                    'path_photoprofile' => $filname
                 ]);
-
-
+            }
+            $userdetail = App\UserDetail::where('user_id', $id)->update([
+                'gender' => $request->gender,
+                'address' => $request->address
+            ]);
 
         }
         return response()->json(['status'=>$status]);

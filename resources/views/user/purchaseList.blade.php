@@ -48,7 +48,7 @@
                         <div class="col-6 text-right order-card-status-text">
 
                             <div class="status-text-wraper text-danger">
-                                <h4 class="text-bold">{{$tr->payment->status->status_name}}</h4>
+                                <h4 class="text-bold">{{$tr->status->status_name}}</h4>
                             </div>
                         </div>
                     </div>

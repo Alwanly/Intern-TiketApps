@@ -7,7 +7,7 @@
                 <div class="col-4 section-profile">
                     <div class="profile-img-container">
                         <div class="profile-img-wrapper">
-                            @if($user->userDetail->path_photoprofile == "")
+                            @if(empty($user->userDetail->path_photoprofile))
                             <img src="/images/profil_default.png" alt="profile">
                             @else
                                 <img src="{{ asset('storage/profile/'.$user->userDetail->path_photoprofile) }}" alt="profile pic">
@@ -21,14 +21,15 @@
                     <div class="detail-user-container ">
                         <div class="agent-wrapper">
 
-                            <ul class="list-group">
+                            <ul class="list-group agent">
                                 @if($user->agent != '')
                                     @if($user->agent->status_id == 2 || $user->agent->type->title != "Menuggu Konfirmasi")
-                                <li class="list-group--custom-item ">Agent : <p class="status-agent">{{$user->agent->code_agent}}</p></li>
+                                            <li class="list-group--custom-item ">Agent : <p>{{$user->agent->code_agent}}</p></li>
+                                            <p hidden id="status-agent">{{$user->agent->type->title}}</p>
                                         @elseif($user->agent->type->title == "Menuggu Konfirmasi" || $user->agent->type->title == "Ditolak" )
-                                        <li class="list-group--custom-item ">Status Agent : <p>{{$user->agent->type->title}}</p></li>
+                                            <li class="list-group--custom-item ">Status Agent : <p id="status-agent">{{$user->agent->type->title}}</p></li>
                                         @endif
-                                        <li class="list-group--custom-item"><span><i id="icon-kaabah" class="fa fa-kaaba "></i></span> </li>
+                                            <li class="list-group--custom-item"><span><i id="icon-kaabah" class="fa fa-kaaba"></i></span> </li>
                                 @else
                                 <li class="list-group--custom-item"><button type="button" data-toggle="modal" data-target="#modal_agent" class="btn btn-custom-primary">Agent</button></li>
                                 @endif
@@ -45,7 +46,7 @@
                                 <div class="form-group row">
                                     <label for="staticEmail" class="col-sm-2 col-form-label">Phone Number</label>
                                     <div class="col-8">
-                                        <input type="number" disabled  class="form-control-plaintext data-edit" id="telephone" value="{{$user->userDetail->telephone}}">
+                                        <input type="number" disabled  class="form-control-plaintext data-edit" id="telephone" value="{{$user->telephone}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -146,8 +147,10 @@
 @push('js')
     <script>
         $(document).ready(function () {
-            var status = '<?php if($user->agent != " ")  echo $user->agent->type->title; ?>';
+            var status = $('#status-agent').text();
+            console.log(status);
             if(status == 'VIP'){
+                console.log(status);
                 $('#icon-kaabah').addClass('text-success');
             }
         });

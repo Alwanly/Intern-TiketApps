@@ -61,7 +61,7 @@ class StatusMaster extends Model
     }
 
     public function payment(){
-        return $this->hasMany('App\Payment');
+        return $this->hasMany('App\Payment','status_id','id');
     }
 
     public function paymentConfirm(){

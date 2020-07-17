@@ -14,8 +14,7 @@ class HomeController extends Controller
     {
         $packet = UmrohPacket::whereHas('category',function (Builder $query){
             $query->where('category_name','=','promo');
-            $query->where('status_id',2);
-        })->limit(3)->get();
+        })->where('status_id',2)->limit(3)->get();
         return view('user.home',[
             'packets' => $packet
         ]);

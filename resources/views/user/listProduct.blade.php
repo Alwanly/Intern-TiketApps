@@ -95,7 +95,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{$packet->packet_title}}</h5>
-                                    <p class="card-text d-block"> <i class="nav-icon fas fa-calendar-alt"></i> @dateFormat($packet->detail->takeoff_date)</p>
+                                    <p class="card-text d-block"> <i class="nav-icon fas fa-calendar-alt"></i> {{$packet->detail->getDateManasik()}}</p>
                                     <p class="card-text">@currency($packet->price[0]->room->room_price)</p>
                                 </div>
                             </div>

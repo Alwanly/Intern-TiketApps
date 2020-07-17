@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class UmrohPacketDetail extends Model
 {
@@ -13,6 +14,17 @@ class UmrohPacketDetail extends Model
 
     public function packet(){
         return $this->belongsTo('App\UmrohPacket','packet_id','id');
+    }
+
+    public function getDateManasik(){
+        return Carbon::parse($this->attributes['manasik_date'])->translatedFormat('l, d M Y');
+    }
+
+    public function getDateTakeoff(){
+        return Carbon::parse($this->attributes['takeoff_date'])->translatedFormat('l, d M Y');
+    }
+    public function getDateReturn(){
+        return Carbon::parse($this->attributes['return_date'])->translatedFormat('l, d M Y');
     }
 
 }
