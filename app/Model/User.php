@@ -5,8 +5,9 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
@@ -37,6 +38,30 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    public function getJSONUser(){
+        return [
+            'id'=>$this->attributes['id'],
+            'email'=>$this->attributes['email'],
+            'telephone'=>$this->attributes['telephone'],
+            'role'=>['role'=>$this->role->role,],
+            'detail'=>[
+                'gender'=>$this->userDetail->gender,
+                'path_photoprofil'=>$this->userDetail->path_photoprofil,
+                'address'=>$this->userDetail->address
+                ],
+            'otp' => $this->otp
+        ];
+    }
+
     public function status(){
         return $this->belongsTo('App\StatusMaster');
     }
@@ -51,5 +76,9 @@ class User extends Authenticatable
 
     public function userDetail(){
         return $this->hasOne('App\UserDetail');
+    }
+
+    public function otp(){
+        return $this->hasOne('App\OTPUser');
     }
 }

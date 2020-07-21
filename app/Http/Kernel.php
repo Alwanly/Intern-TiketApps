@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\AdminVerifi;
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isUserVerifi;
+use App\Http\Middleware\OtpVerify;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,7 +68,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         "isAdmin" =>\App\Http\Middleware\isAdmin::class,
-        "isUser"=>\App\Http\Middleware\isUser::class
+        "isUser"=>\App\Http\Middleware\isUser::class,
+        'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
+        'otp.verify' => OtpVerify::class
     ];
 
     /**
