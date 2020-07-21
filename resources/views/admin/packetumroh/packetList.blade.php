@@ -9,7 +9,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">List Packet Umroh</li>
+                            <li class="breadcrumb-item active">Daftar Packet Umroh</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -42,11 +42,7 @@
                                     <tr>
                                         <td>{{$i++}}</td>
                                         <td>{{$packet->packet_title}}</td>
-                                        <?php
-                                        $data = $packet->detail->takeoff_date;
-                                        $date = explode('-',$data);
-                                        ?>
-                                        <td>{{$packet->detail->takeoff_date}}</td>
+                                        <td>{{$packet->detail->getdateTakeoff()}}</td>
                                         <td>{{$packet->status->status_name}}</td>
                                         <td><a href="{{route('packetDetail',['id'=>$packet->id])}}" class="btn btn-outline-primary btn-sm">Detail <i class="fas fa-search"></i> </a></td>
                                     </tr>

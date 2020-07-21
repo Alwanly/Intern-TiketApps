@@ -9,8 +9,8 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{route('packetList')}}"  class="text-primary breadcrumb-item active">List Packet Umroh</a>
-                            <li class="breadcrumb-item active">Create Packet Umroh</li>
+                            <a href="{{route('packetList')}}"  class="text-primary breadcrumb-item active">Daftar Transaksi</a>
+                            <li class="breadcrumb-item active">Update Transaksi</li>
                         </ol>
                     </div>
                 </div>
@@ -72,12 +72,10 @@
     <script>
         $('#select-Packet').change(function () {
             var packetId = $(this).val();
-            console.log(packetId);
-
             $.ajax({
                 type:"GET",
-                url:"/getpacket/"+packetId,
-                dataType:'json',
+                url:"/admin/getPacket/"+packetId,
+                dataType:'JSON',
                 success:function (data) {
                     $('#manasik').attr('value', data['manasik']);
                     $('#takeoff').attr('value',data['takeoff']);

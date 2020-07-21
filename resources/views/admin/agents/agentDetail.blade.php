@@ -9,8 +9,8 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <ol class="breadcrumb float-sm-right">
-                            <router-link to="/packet" class="breadcrumb-item active">List Agent</router-link>
-                            <li class="breadcrumb-item active">Verification Agent</li>
+                            <router-link to="/packet" class="breadcrumb-item active">Daftar Agent</router-link>
+                            <li class="breadcrumb-item active">Verifikasi Agent</li>
                         </ol>
                     </div>
                 </div>
@@ -77,8 +77,8 @@
                                         @endforeach
                                 </select>
                             </div>
-                            <button type="submit"  name="submit" class="btn btn-primary" value="Accept">Accept</button>
-                            <button type="submit"  name="submit" class="btn btn-danger" value="Decline">Decline</button>
+                            <button type="submit"  name="submit" class="btn btn-primary" value="Accept">Update</button>
+                            <button type="reset"  name="submit" class="btn btn-danger" value="Decline">Cancel</button>
                         </form>
                     </div>
                 </div>
@@ -120,6 +120,10 @@
             var img =" {{asset('storage/agentKTP/')}}"+"/"+dataImg;
             $('#ktpJamaah').attr('src',img);
             document.getElementById('name-jamaah').innerHTML=name;
+        })
+
+        $("select [name='type_agent_id'").change(function () {
+            alert($(this).val());
         })
     </script>
 @endpush

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
     public function index(){
-        $payments = Payment::paginate(10);
+        $payments = Payment::all();
         return view('admin.payment.paymentList',['payments'=>$payments]);
     }
 

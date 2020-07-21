@@ -18,7 +18,7 @@ class AgentController extends Controller
     public function edit($id){
         $agent = Agent::find($id);
         $agentType = AgentType::all();
-        $statusMaster = StatusMaster::where('status_code','sa')->get();
+        $statusMaster = StatusMaster::whereIn('status_code',['sa','sag'])->get();
         return view('admin.agents.agentDetail',
             [
                 'agent' => $agent,
@@ -34,11 +34,7 @@ class AgentController extends Controller
         if ($request->submit == 'Accept'){
             $agent->agent_type_id = $request->agent_type_id;
             $agent->status_id = $request->status_id;
-        }elseif ($request->submit == 'Decline'){
-            $agent->agent_type_id = $request->agent_type_id;
-            $agent->status_id = $request->status_id;
         }
-        ;
         if (!$agent->save()) {
             $request->session()->flash('status', false);
             $request->session()->flash('message', 'Error Update Data');

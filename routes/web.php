@@ -52,7 +52,7 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function (){
     Route::get('/transaction/detail/{id}','Admin\TransactionController@detail')->name('transactionDetail');
     Route::get('/transaction/update','Admin\TransactionController@edit')->name('transactionEdit');
     Route::post('/transaction/update','Admin\TransactionController@update')->name('transactionUpdate');
-    Route::get('/getpacket/{id}',"Admin\TransactionController@getPacket")->name('transactionGetPacket');
+    Route::get('/getPacket/{id}',"Admin\TransactionController@getPacket")->name('transactionGetPacket');
 
     //Master Data index
     Route::get('/master_data','Admin\MasterDataController@index')->name('masterData');

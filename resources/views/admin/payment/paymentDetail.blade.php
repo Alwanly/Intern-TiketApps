@@ -9,8 +9,8 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{route('paymentList')}}" class="text-primary breadcrumb-item active"><u>Payment List</u></a>
-                            <li class="breadcrumb-item active">Payment Detail</li>
+                            <a href="{{route('paymentList')}}" class="text-primary breadcrumb-item active"><u>Daftar Payment</u></a>
+                            <li class="breadcrumb-item active">Detail Payment</li>
                         </ol>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         <h3 class="card-title">Payment Confirmation</h3>
                     </div>
                     <div class="card-body">
-
+                        @if(!empty($paymentConfirm->payment_id))
                         <form action="{{route('paymentUpdate')}}" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{$paymentConfirm->payment_id}}">
@@ -83,6 +83,9 @@
                             <button type="submit" name="submit" id="decline" class="btn btn-danger btn-md" value="Decline">Decline</button>
                                 @endif
                         </form>
+                            @else
+                            <h3 class="card-text">Belum diBayar</h3>
+                        @endif
                     </div>
                 </div>
             </div>

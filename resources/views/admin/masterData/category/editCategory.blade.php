@@ -9,8 +9,9 @@
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <ol class="breadcrumb float-sm-right">
-                        <a href="{{route('masterData')}}"  class="text-primary breadcrumb-item active">List Master Data</a>
-                        <li class="breadcrumb-item active">Create Data</li>
+                        <a href="{{route('masterData')}}"  class="text-primary breadcrumb-item active">Daftar Master Data</a>
+                        <li class="breadcrumb-item active">Edit Data</li>
+                    </ol>
                     </ol>
                 </div>
             </div>

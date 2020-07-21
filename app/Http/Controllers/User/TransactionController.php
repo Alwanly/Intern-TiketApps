@@ -6,6 +6,7 @@ use App\Agent;
 use App\BankMaster;
 use App\Http\Controllers\Controller;
 use App\Payment;
+use App\PaymentConfirm;
 use App\Price;
 use App\Transaction;
 use App\TransactionDetail;
@@ -80,8 +81,9 @@ class TransactionController extends Controller
             'transaction_id'=>$transaction,
             'nominal' => $price->room->room_price,
             'status_id' => 10
-        ]);
-        return redirect()->route('paymentIndex',['id'=>$payment->id]);
+        ])->id;
+
+        return redirect()->route('paymentIndex',['id'=>$payment]);
     }
 
     public function showList($request){
@@ -91,27 +93,29 @@ class TransactionController extends Controller
             $tabs = $request;
         }
         if ($request == 1){
-            $trs = Transaction::where('user_id',$user_id)->whereHas('payment',function (Builder $q){
-                $q->where('status_id','=',10);
-            })->get();
-
+            $trs = Transaction::where('status_id',4)->where('user_id',$user_id)->get();
             $tabs = $request;
         }
         if ($request == 2){
-            $trs = Transaction::where('user_id',$user_id)->whereHas('payment',function (Builder $q){
-                $q->where('status_id','=',11);
-            })->get();
-
+            $trs = Transaction::where('status_id',5)->where('user_id',$user_id)->get();
             $tabs = $request;
         }
         if ($request == 3){
-            $trs = Transaction::where('user_id',$user_id)->whereHas('payment',function (Builder $q){
-                $q->where('status_id','=',12);
-            })->get();
-
+            $trs = Transaction::where('status_id',6)->where('user_id',$user_id)->get();
             $tabs = $request;
         }
-
+        if ($request == 4){
+            $trs = Transaction::where('status_id',7)->where('user_id',$user_id)->get();
+            $tabs = $request;
+        }
+        if ($request == 5){
+            $trs = Transaction::where('status_id',8)->where('user_id',$user_id)->get();
+            $tabs = $request;
+        }
+        if ($request == 6){
+            $trs = Transaction::where('status_id',9)->where('user_id',$user_id)->get();
+            $tabs = $request;
+        }
 
         return view('user.purchaseList',[
             'trs' => $trs,

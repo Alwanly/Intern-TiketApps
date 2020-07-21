@@ -25,6 +25,7 @@ class UserController extends Controller
 
     public function agent(Request $request){
 
+
         $dateDaftar = Carbon::now()->toDateString();
         $code = $this->getCodeAgent();
         $file = $request->file('photo');
@@ -32,16 +33,31 @@ class UserController extends Controller
         $path = 'storage/agentKTP';
         $file->move($path,$filname);
 
-        $agent = App\Agent::create([
-            'user_id'=>Auth::user()->id,
-            'agent_type_id'=> 1,
-            'code_agent' => $code,
-            'bank_id' => $request->bank_id,
-            'norekening' => $request->norekening,
-            'name_rekening' => $request->name_rekening,
-            'path_photoktp'=> $filname,
-            'status_id' => 3
-        ])->get();
+        $check = App\Agent::where('user_id',Auth::user()->id)->get();
+
+        if (empty($check[0])) {
+            $agent = App\Agent::create([
+                'user_id' => Auth::user()->id,
+                'agent_type_id' => 3,
+                'code_agent' => $code,
+                'bank_id' => $request->bank_id,
+                'norekening' => $request->norekening,
+                'name_rekening' => $request->name_rekening,
+                'path_photoktp' => $filname,
+                'status_id' => 17
+            ])->get();
+        }else{
+            $agent = App\Agent::where('user_id',Auth::user()->id)->update([
+                'user_id' => Auth::user()->id,
+                'agent_type_id' => 3,
+                'code_agent' => $code,
+                'bank_id' => $request->bank_id,
+                'norekening' => $request->norekening,
+                'name_rekening' => $request->name_rekening,
+                'path_photoktp' => $filname,
+                'status_id' => 17
+            ]);
+        }
 
         $status = ($agent != ' ') ? 'true' : 'false';
 

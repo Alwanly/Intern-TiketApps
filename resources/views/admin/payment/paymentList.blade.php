@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Payment List</li>
+                            <li class="breadcrumb-item active">Daftar Payment</li>
                         </ol>
                     </div>
                 </div>
@@ -42,7 +42,8 @@
                                             <td>{{$i++}}</td>
                                             <td>{{$p->transaction->user->name}}</td>
                                             <td>{{$p->bank->bank_name}}</td>
-                                            <td>{{\Carbon\Carbon::parse($p->updated_at)->toDayDateTimeString()}}</td>
+                                            <td>{{$p->getDateUpdate()
+}}</td>
                                             <td>{{$p->status->status_name}}</td>
                                             <td><a href="{{route('paymentDetail',['id'=>$p->id])}}" class="btn btn-outline-primary btn-sm">Detail <i class="fas fa-search"></i> </a></td>
                                         </tr>

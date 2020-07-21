@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class UmrohPacket extends Model
 {
@@ -10,6 +11,11 @@ class UmrohPacket extends Model
 
     protected $fillable =
         ['path_bannerpacket','packet_title','packet_desc','category_id','airline_id','status_id'];
+
+
+    public function getDateCreate(){
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d M Y');
+    }
 
     public function status(){
         return $this->belongsTo('App\StatusMaster');

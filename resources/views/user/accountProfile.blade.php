@@ -23,13 +23,13 @@
 
                             <ul class="list-group agent">
                                 @if($user->agent != '')
-                                    @if($user->agent->status_id == 2 || $user->agent->type->title != "Menuggu Konfirmasi")
-                                            <li class="list-group--custom-item ">Agent : <p>{{$user->agent->code_agent}}</p></li>
-                                            <p hidden id="status-agent">{{$user->agent->type->title}}</p>
-                                        @elseif($user->agent->type->title == "Menuggu Konfirmasi" || $user->agent->type->title == "Ditolak" )
-                                            <li class="list-group--custom-item ">Status Agent : <p id="status-agent">{{$user->agent->type->title}}</p></li>
-                                        @endif
-                                            <li class="list-group--custom-item"><span><i id="icon-kaabah" class="fa fa-kaaba"></i></span> </li>
+                                    <li class="list-group--custom-item status-agent">Status Agent : <p id="status-agent">{{$user->agent->status->status_name}}</p></li>
+                                    <li hidden class="list-group--custom-item code-agent ">Agent : <p>{{$user->agent->code_agent}}</p></li>
+                                    <li hidden class="list-group--custom-item code-agent"><span><i id="icon-kaabah" class="fa fa-kaaba"></i></span> </li>
+                                    <p hidden id="title-agent">{{$user->agent->type->title}}</p>
+                                    @if($user->agent->status->status_name == 'Ditolak')
+                                        <li class="list-group--custom-item"><button type="button" data-toggle="modal" data-target="#modal_agent" class="btn btn-custom-primary">Agent</button></li>
+                                    @endif
                                 @else
                                 <li class="list-group--custom-item"><button type="button" data-toggle="modal" data-target="#modal_agent" class="btn btn-custom-primary">Agent</button></li>
                                 @endif
@@ -127,11 +127,7 @@
                         <div class="form-group">
                             <label for="">Photo KTP</label>
                             <div class="input-group mb-3">
-                                <div class="custom-file">
-                                    <input  name="photo" type="file" class="custom-file-input" id="photo" required>
-                                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-                                </div>
-                            </div>
+                                    <input  name="photo" type="file" class="" id="photo" required>
                         </div>
 
                 </div>
@@ -148,107 +144,113 @@
     <script>
         $(document).ready(function () {
             var status = $('#status-agent').text();
-            console.log(status);
-            if(status == 'VIP'){
-                console.log(status);
-                $('#icon-kaabah').addClass('text-success');
-            }
+            var title = $('#title-agent').text();
+            if (status != 'Menunggu Verifikasi' && status != 'Ditolak' ){
+              $('.status-agent').attr('hidden','');
+              $('.code-agent').removeAttr('hidden');
+              const icon = $('#icon-kaabah');
+              if (status == 'Active'){
+                  var iconA  = (title == 'VIP') ? icon.addClass('text-success') : icon.addClass('text-primary');
+              }else {
+                  icon.addClass('text-danger');
+              }
+          }
         });
-        function submit() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        dataF = {
-            "name": $("#name").val(),
-            "gender": $("input[name='gender']:checked").val(),
-            "phone":$('#telephone').val(),
-            "address": $('#address').text(),
-        };
-        var formD = new FormData();
-        var file = $('#file-profile')[0].files[0];
-        formD.append('name',dataF.name);
-        formD.append('gender',dataF.gender);
-        formD.append('phone',dataF.phone);
-        formD.append('address',dataF.address);
-        formD.append('file',file);
-
-        $.ajax({
-            type:'POST',
-            url:'{{route('account.update')}}',
-            data:formD,
-            processData: false,
-            contentType: false,
-            dataType: 'json',
-            success:function (ss) {
-                console.log(ss);
-                if (ss.status){
-                    alert('Update Berhasil');
-                    saveAndcancel();
-                }
-            },
-            error:function () {
-                alert('gender');
-            }
-        });
-
-        }
-        function uploadProfile() {
-                document.getElementById('file-profile').click();
-        }
-        function edit() {
-            const inputEl = document.querySelectorAll('.data-edit');
-
-            inputEl.forEach(element =>{
-                element.classList.replace('form-control-plaintext','form-control');
-                element.removeAttribute('disabled');
-            });
-            document.getElementById('gender').setAttribute('hidden','');
-            document.getElementById('genderOption').removeAttribute('hidden');
-            const save = document.getElementById('save');
-            const edit = document.getElementById('edit');
-            const cancel = document.getElementById('cancel');
-            const upload = document.getElementById('btn-upload');
-            upload.removeAttribute('hidden');
-            save.removeAttribute('hidden');
-            cancel.removeAttribute('hidden');
-            edit.setAttribute('hidden','');
-
-        }
-        function saveAndcancel() {
-            location.reload();
-        }
-
-        $('#formAgent').submit(function (e) {
-            e.preventDefault();
-            console.log('bisa');
-            var dataForm = new FormData(this);
-            var file = $('#photo')[0].files[0];
-            dataForm.append('file',file,'photo');
-            $.ajax({
-                type:"POST",
-                url :"{{route('agent')}}",
-                data:dataForm,
-                processData: false,
-                contentType: false,
-                dataType: 'json',
-                success:function (response) {
-                    var status = response.status;
-                    if(status) {
-                         location.reload();
-                         return false;
-                    }else{
-                        alert('error model')
+            function submit() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
+                });
+                dataF = {
+                    "name": $("#name").val(),
+                    "gender": $("input[name='gender']:checked").val(),
+                    "phone":$('#telephone').val(),
+                    "address": $('#address').text(),
+                };
+                var formD = new FormData();
+                var file = $('#file-profile')[0].files[0];
+                formD.append('name',dataF.name);
+                formD.append('gender',dataF.gender);
+                formD.append('phone',dataF.phone);
+                formD.append('address',dataF.address);
+                formD.append('file',file);
 
-                },
-                error:function (e) {
-                    alert('error connection')
-                }
+                $.ajax({
+                    type:'POST',
+                    url:'{{route('account.update')}}',
+                    data:formD,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success:function (ss) {
+                        console.log(ss);
+                        if (ss.status){
+                            alert('Update Berhasil');
+                            saveAndcancel();
+                        }
+                    },
+                    error:function () {
+                        alert('gender');
+                    }
+                });
+            }
+
+            //Open file folder
+            function uploadProfile() {
+                document.getElementById('file-profile').click();
+            }
+
+            function edit() {
+                    const inputEl = document.querySelectorAll('.data-edit');
+
+                    inputEl.forEach(element =>{
+                        element.classList.replace('form-control-plaintext','form-control');
+                        element.removeAttribute('disabled');
+                    });
+                    document.getElementById('gender').setAttribute('hidden','');
+                    document.getElementById('genderOption').removeAttribute('hidden');
+                    const save = document.getElementById('save');
+                    const edit = document.getElementById('edit');
+                    const cancel = document.getElementById('cancel');
+                    const upload = document.getElementById('btn-upload');
+                    upload.removeAttribute('hidden');
+                    save.removeAttribute('hidden');
+                    cancel.removeAttribute('hidden');
+                    edit.setAttribute('hidden','');
+
+            }
+            function saveAndcancel() {
+                    location.reload();
+            }
+            $('#formAgent').submit(function (e) {
+                e.preventDefault();
+                var dataForm = new FormData(this);
+                var file = $('#photo')[0].files[0];
+                dataForm.append('file',file,'photo');
+                $.ajax({
+                    type:"POST",
+                    url :"{{route('agent')}}",
+                    data:dataForm,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    success:function (response) {
+                        var status = response.status;
+                        console.log(status);
+                        if(status) {
+                            location.reload();
+                            return false;
+                        }else{
+                            alert('error model')
+                        }
+
+                    },
+                    error:function (e) {
+                        alert('error connection')
+                    }
+                });
             });
-
-        })
 
     </script>
 @endpush

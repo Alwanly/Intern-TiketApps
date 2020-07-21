@@ -8,7 +8,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">Transaction List</li>
+                            <li class="breadcrumb-item active">Daftar Transaction</li>
                         </ol>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$tr->user->name}}</td>
                                     <td>{{$tr->packet->packet_title}}</td>
-                                    <td>{{\Carbon\Carbon::parse($tr->created_at)->toDayDateTimeString()}}</td>
+                                    <td>{{$tr->getDateCreate()}}</td>
                                     <td>{{$tr->status->status_name}}</td>
                                     <td><a href="{{route('transactionDetail',['id'=>$tr->id])}}" class="btn btn-outline-primary btn-sm">Detail <i class="fas fa-search"></i> </a></td>
                                 </tr>

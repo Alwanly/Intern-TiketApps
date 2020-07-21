@@ -6,6 +6,7 @@ use App\BankMaster;
 use App\Http\Controllers\Controller;
 use App\Payment;
 use App\PaymentConfirm;
+use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class PaymentController extends Controller
 
     public function expired($id, Request $request){
         $status = Payment::find($id);
-
+        Transaction::find($status->transaction_id)->update(['status_id'=>15]);
         $status->update([
             'status_id'=> 15
         ]);

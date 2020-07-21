@@ -118,9 +118,10 @@
 
                 }
             });
-            codeIF.focus(function () {
+            codeIF.focusin(function () {
                 var ss = codeIF.hasClass('is-invalid');
                 if(ss) {
+                    codeIF.removeClass('is-invalid');
                     msg.attr('class', '');
                     msg.attr('hidden', '');
                 }
@@ -152,6 +153,6 @@
                 })
 
             })
-        })
+        });
     </script>
 @endpush

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Transaction extends Model
 {
@@ -11,6 +12,9 @@ class Transaction extends Model
         'user_id','packet_id','price_id','status_id','code_agent'
     ];
 
+    public function getDateCreate(){
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d M Y');
+    }
     public function status(){
         return $this->belongsTo('App\StatusMaster');
     }

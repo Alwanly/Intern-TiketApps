@@ -9,8 +9,8 @@
                     </div>
                     <div class="col-sm-6 col-md-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{route('transactionList')}}" class="text-primary breadcrumb-item active"><u>Transaction List</u></a>
-                            <li class="breadcrumb-item active">Transaction Detail</li>
+                            <a href="{{route('transactionList')}}" class="text-primary breadcrumb-item active"><u>Daftar Transaksi</u></a>
+                            <li class="breadcrumb-item active">Detail Transaksi</li>
                         </ol>
                     </div>
                 </div>

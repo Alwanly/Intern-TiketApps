@@ -9,7 +9,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item active">List Agent</li>
+                            <li class="breadcrumb-item active">Daftar Agent</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

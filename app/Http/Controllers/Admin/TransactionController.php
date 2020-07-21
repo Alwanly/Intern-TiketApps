@@ -19,7 +19,7 @@ class TransactionController extends Controller
         return view('admin.transaction.transactionDetail',['transaction'=>$transaction]);
     }
     public function edit(){
-        $packets = UmrohPacket::whereNotIn('status_id',[9])->get();
+        $packets = UmrohPacket::all();
         $status = StatusMaster::where('status_code','st')->get();
 
         return view('admin.transaction.transactionUpdate',[
@@ -28,14 +28,20 @@ class TransactionController extends Controller
         ]);
     }
     public function update(Request $request){
-        $status = Transaction::where('packet_id',$request->packet)->whereNotIn('status_id',['4'])->update([
+        $status = Transaction::where('packet_id',$request->packet)->whereNotIn('status_id',['4','15'])->update([
             'status_id'=>$request->status
         ]);
 
         $packet = UmrohPacket::find($request->packet);
 
         if ($request->status == 8){
-            $packet->update(['status_id' => 3]);
+            Transaction::where('packet_id',$request->packet)->where('status_id','<',8)->update([
+                'status_id'=>15
+            ]);
+        }
+        if ($request->status == 9){
+            $packet->status_id = 3;
+            $packet->save();
         }
 
         if (!$status) {
@@ -52,7 +58,7 @@ class TransactionController extends Controller
     public function getPacket($id){
         $packet = UmrohPacket::find($id);
 
-        return response()->json([
+        return response()->json(['status'=>true,
             'manasik'=>$packet->detail->manasik_date,
             'takeoff'=>$packet->detail->takeoff_date,
             'return'=>$packet->detail->return_date,

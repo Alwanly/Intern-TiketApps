@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Payment extends Model
 {
@@ -10,6 +11,9 @@ class Payment extends Model
     protected $fillable =
         ['transaction_id','bank_id','nominal','status_id'];
 
+    public function getDateUpdate(){
+        return Carbon::parse($this->attributes['updated_at'])->translatedFormat('l, d M Y');
+    }
     public function status(){
         return $this->belongsTo('App\StatusMaster','status_id','id');
     }
