@@ -8,6 +8,8 @@ class Price extends Model
 {
     protected $table = 'prices';
 
+//    protected $hidden = ['packet_id','room_id','status_id','created_at','updated_at'];
+
     protected $fillable=
         ['packet_id','room_id','status_id'];
 

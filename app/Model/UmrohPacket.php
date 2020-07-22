@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 class UmrohPacket extends Model
 {
     protected $table='umroh_packets';
+//    protected $hidden = ['category_id','airline_id','status_id','created_at','updated_at'];
 
     protected $fillable =
         ['path_bannerpacket','packet_title','packet_desc','category_id','airline_id','status_id'];

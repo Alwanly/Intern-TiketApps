@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\APIControllers;
 
 use App\Http\Controllers\Controller;
 use App\OTPUser;
@@ -79,4 +79,24 @@ class LoginController extends Controller
         return response()->json(['status'=>$otp,'message'=>'Code OTP berhasil']);
 //        return response()->json($otp->code_otp);
     }
+
+    public function logout(Request $request){
+
+
+        try {
+            auth('api')->logout();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'User logged out successfully'
+            ]);
+        } catch (JWTException $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, the user cannot be logged out'
+            ], 500);
+        }
+    }
+
+
 }

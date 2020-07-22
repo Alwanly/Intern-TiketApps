@@ -17,10 +17,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login','API\LoginController@login');
-Route::post('register','API\RegisterController@register');
-Route::post('otp','API\LoginController@otp');
+Route::post('login','APIControllers\LoginController@login');
+Route::post('register','APIControllers\RegisterController@register');
+Route::post('otp','APIControllers\LoginController@otp');
+Route::get('logout','APIControllers\LoginController@logout');
+Route::get('packet','APIControllers\HomeController@home');
+Route::get('packet/all','APIControllers\HomeController@packet');
+Route::get('packet/{id}','APIControllers\HomeController@packetById');
 
 Route::middleware(['jwt.verify','otp.verify'])->group(function (){
-    Route::get('packet','API\HomeController@home');
+    //Transaction
+    Route::get('purchase','APIControllers\TransactionController@index');
+    Route::post('purchase/buy','APIControllers\TransactionController@purchase');
+
+    //Master Bank
+    Route::get('bank','APIControllers\PaymentController@bank');
+
+    //Payment
+    Route::get('payment/{id}','APIControllers\PaymentController@index');
+    Route::post('payment/confirm','APIControllers\PaymentController@paymentConfirm');
 });
