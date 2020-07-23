@@ -105,6 +105,7 @@ Route::prefix('u')->group(function (){
         Route::get('/order','User\TransactionController@index')->name('orderPacket');
         Route::post('/order/purchase','User\TransactionController@store')->name('orderStore');
         Route::post('/checkCodeAgent','User\TransactionController@checkCodeAgent')->name('checkCodeAgent');
+
         //payment
         Route::get('/payment/{id}','User\PaymentController@index')->name('paymentIndex');
         Route::post('/payment/confirm','User\PaymentController@confirm')->name('paymentConfirm');
@@ -113,6 +114,7 @@ Route::prefix('u')->group(function (){
         //purchase list
         Route::get('/purchase-list/{id}','User\TransactionController@showList')->name('purchaseShow');
 
+        //account
         Route::get('/account','User\UserController@index')->name('account');
         Route::post('/account/agent','User\UserController@agent')->name('agent');
         Route::post('/account/update','User\UserController@update')->name('account.update');

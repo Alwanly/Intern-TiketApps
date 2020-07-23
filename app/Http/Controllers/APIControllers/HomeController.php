@@ -83,4 +83,9 @@ class HomeController extends Controller
         $packet->makeHidden(['category_id','airline_id','status_id','created_at','updated_at']);
         return response()->json($packet,200);
     }
+
+    public function getImagePacket(Request $image){
+
+        return response()->json(['image'=>asset('storage/bannerPacket/'.$image->image)]);
+    }
 }

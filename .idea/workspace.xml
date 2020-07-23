@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/PaymentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/TransactionController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/AccountController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/OtpVerify.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/OtpVerify.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/TransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/TransactionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PacketUmrohController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PacketUmrohController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/JwtMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/JwtMiddleware.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Model/Price.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Price.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/RoomType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/RoomType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/UmrohPacket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/UmrohPacket.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Transaction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/jwt.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/jwt.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,19 +150,19 @@
     <property name="ts.external.directory.path" value="C:\Users\Alwan\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\images" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\app\Http\Controllers\User" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\storage\app" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\category" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\airlines" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\images" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\sass" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\storage\bannerPacket" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\category" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\images" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\app\Http\Controllers\User" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\storage\app" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\category" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\airlines" />
     </key>
   </component>
   <component name="RunManager">
@@ -205,7 +205,8 @@
       <workItem from="1594968855916" duration="26470000" />
       <workItem from="1595211738415" duration="22602000" />
       <workItem from="1595301140388" duration="13510000" />
-      <workItem from="1595386061657" duration="24061000" />
+      <workItem from="1595386061657" duration="24192000" />
+      <workItem from="1595472252816" duration="17572000" />
     </task>
     <servers />
   </component>
@@ -231,13 +232,13 @@
     <state x="410" y="188" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594206456743" />
     <state x="410" y="188" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593159427503" />
     <state x="410" y="188" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1366.738@0.30.1366.738" timestamp="1593074950936" />
-    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595423377591">
+    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595486205401">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594263969188" />
     <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593131094899" />
     <state x="1850" y="175" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738/1366.30.1600.870@1366.30.1600.870" timestamp="1595215678992" />
-    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738@0.30.1366.738" timestamp="1595423377591" />
+    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738@0.30.1366.738" timestamp="1595486205401" />
     <state x="463" y="153" key="FileChooserDialogImpl" timestamp="1593125876081">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
@@ -269,7 +270,7 @@
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1593763216772" />
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593421306960" />
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738@0.30.1366.738" timestamp="1594009655422" />
-    <state x="359" y="222" key="com.intellij.ide.util.TipDialog" timestamp="1595386222929">
+    <state x="359" y="222" key="com.intellij.ide.util.TipDialog" timestamp="1595472584029">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594364003447" />
@@ -277,7 +278,7 @@
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-98.1600.870@0.30.1366.738" timestamp="1594607793741" />
     <state x="1786" y="128" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-98.1600.870@1366.-98.1600.870" timestamp="1594697111278" />
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.30.1600.870@0.30.1366.738" timestamp="1595211781490" />
-    <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1595386222929" />
+    <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1595472584029" />
     <state x="0" y="30" width="648" height="738" key="find.popup" timestamp="1593657397530">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
@@ -292,13 +293,13 @@
     <state x="1763" y="79" key="run.anything.popup/0.30.1366.738/1366.-98.1600.870@1366.-98.1600.870" timestamp="1594711692843" />
     <state x="1763" y="207" key="run.anything.popup/0.30.1366.738/1366.30.1600.870@1366.30.1600.870" timestamp="1595234816985" />
     <state x="339" y="180" key="run.anything.popup/0.30.1366.738@0.30.1366.738" timestamp="1595388416780" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1595311022558">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1595478956208">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594369239300" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593404250915" />
     <state x="1771" y="-28" width="788" height="800" key="search.everywhere.popup/0.30.1366.738/1366.-98.1600.870@1366.-98.1600.870" timestamp="1594698145373" />
     <state x="1771" y="100" width="788" height="800" key="search.everywhere.popup/0.30.1366.738/1366.30.1600.870@1366.30.1600.870" timestamp="1595235362333" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738@0.30.1366.738" timestamp="1595311022558" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738@0.30.1366.738" timestamp="1595478956208" />
   </component>
 </project>

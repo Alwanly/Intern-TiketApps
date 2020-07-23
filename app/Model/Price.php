@@ -24,6 +24,6 @@ class Price extends Model
     }
 
     public function transaction(){
-        return $this->belongsTo('App\Transaction','transaction_id','id');
+        return $this->belongsTo('App\Transaction','id','id');
     }
 }

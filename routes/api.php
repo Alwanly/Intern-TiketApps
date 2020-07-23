@@ -24,11 +24,15 @@ Route::get('logout','APIControllers\LoginController@logout');
 Route::get('packet','APIControllers\HomeController@home');
 Route::get('packet/all','APIControllers\HomeController@packet');
 Route::get('packet/{id}','APIControllers\HomeController@packetById');
+Route::get('getBannerPacket','APIControllers\HomeController@getImagePacket');
 
 Route::middleware(['jwt.verify','otp.verify'])->group(function (){
     //Transaction
     Route::get('purchase','APIControllers\TransactionController@index');
     Route::post('purchase/buy','APIControllers\TransactionController@purchase');
+    Route::get('purchase/list','APIControllers\TransactionController@showList');
+    //check code agent
+    Route::post('checkCodeAgent','APIControllers\TransactionController@checkCodeAgent');
 
     //Master Bank
     Route::get('bank','APIControllers\PaymentController@bank');
@@ -36,4 +40,16 @@ Route::middleware(['jwt.verify','otp.verify'])->group(function (){
     //Payment
     Route::get('payment/{id}','APIControllers\PaymentController@index');
     Route::post('payment/confirm','APIControllers\PaymentController@paymentConfirm');
+    Route::post('payment/expired','APIControllers\PaymentController@paymentExpired');
+
+    //Account and Agent
+    Route::get('account','APIControllers\AccountController@account');
+    Route::post('account/update','APIControllers\AccountController@update');
+    Route::post('register/agent','APIControllers\AccountController@agent');
+
+    //get Image
+    Route::get('getProfile','APIControllers\AccountController@getImageProfile');
+
+
+
 });

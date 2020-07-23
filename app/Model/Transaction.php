@@ -32,7 +32,7 @@ class Transaction extends Model
     }
 
     public function price(){
-        return $this->hasOne('App\Price');
+        return $this->hasOne('App\Price','id','price_id');
     }
 
     public function payment(){

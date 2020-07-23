@@ -65,15 +65,17 @@ class PacketUmrohController extends Controller
         ]);
 
         $file = $request->file('banner');
-        $fileName = Carbon::now()->toDateString().'_'.$request->packet_title.'.'.$file->getClientOriginalExtension();
+        $title = str_replace(' ','_',$request->packet_title);
+        $fileName = Carbon::now()->toDateString().'_'.$title.'.'.$file->getClientOriginalExtension();
         $path = 'storage/bannerPacket';
         $status = Storage::disk('banner_packet')->exists($fileName);
         if ($status){
             return redirect()->back();
         }
         $file->move($path,$fileName);
+        $nameBanner = asset('storage/bannerPacket/'.$fileName);
         $packet_id = UmrohPacket::create([
-            'path_bannerpacket' => $fileName,
+            'path_bannerpacket' => $nameBanner,
             'packet_title'=>$request->packet_title,
             'packet_desc'=>$request->packet_desc,
             'category_id'=>$request->category_id,
