@@ -23,7 +23,8 @@ Route::post('otp','APIControllers\LoginController@otp');
 Route::get('logout','APIControllers\LoginController@logout');
 Route::get('packet','APIControllers\HomeController@home');
 Route::get('packet/all','APIControllers\HomeController@packet');
-Route::get('packet/{id}','APIControllers\HomeController@packetById');
+Route::get('packet/id/{id}','APIControllers\HomeController@packetById');
+Route::get('packet/search/','APIControllers\HomeController@packetBySearchAndSorting');
 Route::get('getBannerPacket','APIControllers\HomeController@getImagePacket');
 
 Route::middleware(['jwt.verify','otp.verify'])->group(function (){
