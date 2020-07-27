@@ -29,12 +29,12 @@ class UserController extends Controller
         $dateDaftar = Carbon::now()->toDateString();
         $code = $this->getCodeAgent();
         $file = $request->file('photo');
-        $filname = $dateDaftar.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
+        $filename = $dateDaftar.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
         $path = 'storage/agentKTP';
-        $file->move($path,$filname);
+        $file->move($path,$filename);
 
         $check = App\Agent::where('user_id',Auth::user()->id)->get();
-
+        $namePhoto = asset('storage/agentKTP/'.$filename);
         if (empty($check[0])) {
             $agent = App\Agent::create([
                 'user_id' => Auth::user()->id,
@@ -43,7 +43,7 @@ class UserController extends Controller
                 'bank_id' => $request->bank_id,
                 'norekening' => $request->norekening,
                 'name_rekening' => $request->name_rekening,
-                'path_photoktp' => $filname,
+                'path_photoktp' => $namePhoto,
                 'status_id' => 17
             ])->get();
         }else{
@@ -54,7 +54,7 @@ class UserController extends Controller
                 'bank_id' => $request->bank_id,
                 'norekening' => $request->norekening,
                 'name_rekening' => $request->name_rekening,
-                'path_photoktp' => $filname,
+                'path_photoktp' => $namePhoto,
                 'status_id' => 17
             ]);
         }
@@ -86,11 +86,12 @@ class UserController extends Controller
 
             if ($request->hasFile('file')){
                 $file = $request->file('file');
-                $filname = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
+                $filename = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
                 $path = 'storage/profile';
-                $file->move($path, $filname);
+                $file->move($path, $filename);
+                $namePhoto = asset('storage/profile/'. $filename);
                 $userdetail = App\UserDetail::where('user_id', $id)->update([
-                    'path_photoprofile' => $filname
+                    'path_photoprofile' => $namePhoto
                 ]);
             }
             $userdetail = App\UserDetail::where('user_id', $id)->update([

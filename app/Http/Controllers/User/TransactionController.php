@@ -66,13 +66,13 @@ class TransactionController extends Controller
             $path = 'storage/ktpJamaah';
 
             $file->move($path,$filename);
-
+            $namePhoto = asset('storage/ktpJamaah/'.$filename);
             TransactionDetail::create([
                 'transaction_id'=>$transaction,
                 'jamaah_name'=>$data['name_jamaah'][$i],
                 'jamaah_gender'=>$data['gender_jamaah'][$i],
                 'jamaah_telephone'=>$data['number_jamaah'][$i],
-                'jamaah_path_photoktp'=>$filename
+                'jamaah_path_photoktp'=>$namePhoto
             ]);
         }
 

@@ -20,7 +20,10 @@ class OtpVerify
         $user = JWTAuth::user();
 
         if ($user->otp->status_id == 3) {
-            return response()->json(['status'=>false,'message'=>'Account not Verify']);
+            return response()->json([
+                'status'=>false,
+                'message'=>'Account not Verify'
+            ]);
         }
         return $next($request);
     }

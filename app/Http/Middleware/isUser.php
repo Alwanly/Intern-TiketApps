@@ -21,7 +21,10 @@ class isUser
             redirect(route('dashboard'));
         } elseif ($user->role->role =='jamaaah'){
             redirect(route('home'));
+        }else {
+            return route('login');
         }
+
         return $next($request);
     }
 }

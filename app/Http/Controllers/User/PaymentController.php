@@ -27,16 +27,17 @@ class PaymentController extends Controller
         $time =  time();
 //
         $file = $request->file('photo');
-        $filname = $dateConfirm.'_'.$time.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
+        $filename = $dateConfirm.'_'.$time.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
         $path = 'storage/photoTransfer';
 
-        $file->move($path,$filname);
+        $file->move($path,$filename);
+        $namePhoto = asset('storage/photoTransfer/'.$filename);
         $paymentC = PaymentConfirm::create([
             'payment_id' => $request->payment_id,
             'bank_id' => $request->bank_id,
             'norekening' => $request->norekening,
             'rekening_name'=> $request->rekening_name,
-            'path_photoproof' => $filname,
+            'path_photoproof' => $namePhoto,
         ]);
 
         $payment = Payment::find($paymentC->payment_id)->update(['status_id'=>11]);

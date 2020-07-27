@@ -21,7 +21,7 @@ Route::post('login','APIControllers\LoginController@login');
 Route::post('register','APIControllers\RegisterController@register');
 Route::post('otp','APIControllers\LoginController@otp');
 Route::get('logout','APIControllers\LoginController@logout');
-Route::get('packet','APIControllers\HomeController@home');
+Route::get('packet/home','APIControllers\HomeController@home');
 Route::get('packet/all','APIControllers\HomeController@packet');
 Route::get('packet/id/{id}','APIControllers\HomeController@packetById');
 Route::get('packet/search/','APIControllers\HomeController@packetBySearchAndSorting');
