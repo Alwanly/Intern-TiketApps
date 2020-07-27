@@ -111,16 +111,16 @@
             var msg = $('#message-code');
             var codeIF = $('#code-agent');
             $('form').submit(function (e) {
-                var ss = codeIF.hasClass('is-invalid');
-                if(ss){
+                var code = codeIF.hasClass('is-invalid');
+                if(code){
                     alert('Code in Valid');
                     return  false;
 
                 }
             });
             codeIF.focusin(function () {
-                var ss = codeIF.hasClass('is-invalid');
-                if(ss) {
+                var code = codeIF.hasClass('is-invalid');
+                if(code) {
                     codeIF.removeClass('is-invalid');
                     msg.attr('class', '');
                     msg.attr('hidden', '');

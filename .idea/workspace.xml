@@ -4,15 +4,14 @@
     <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/TransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/TransactionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/JwtMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/JwtMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/OtpVerify.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/OtpVerify.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/isUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/isUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PacketUmrohController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PacketUmrohController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/detailProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/detailProduct.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/listProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/listProduct.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/transaction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/transaction.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,6 +207,7 @@
       <workItem from="1595472252816" duration="17572000" />
       <workItem from="1595571593889" duration="14563000" />
       <workItem from="1595811630088" duration="10301000" />
+      <workItem from="1595826717759" duration="9632000" />
     </task>
     <servers />
   </component>
@@ -233,13 +233,13 @@
     <state x="410" y="188" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594206456743" />
     <state x="410" y="188" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593159427503" />
     <state x="410" y="188" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1366.738@0.30.1366.738" timestamp="1593074950936" />
-    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595574348261">
+    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595830251247">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594263969188" />
     <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593131094899" />
     <state x="1850" y="175" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738/1366.30.1600.870@1366.30.1600.870" timestamp="1595215678992" />
-    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738@0.30.1366.738" timestamp="1595574348261" />
+    <state x="413" y="153" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1366.738@0.30.1366.738" timestamp="1595830251247" />
     <state x="463" y="153" key="FileChooserDialogImpl" timestamp="1593125876081">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
@@ -271,7 +271,7 @@
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1593763216772" />
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593421306960" />
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738@0.30.1366.738" timestamp="1594009655422" />
-    <state x="359" y="222" key="com.intellij.ide.util.TipDialog" timestamp="1595811633089">
+    <state x="359" y="222" key="com.intellij.ide.util.TipDialog" timestamp="1595826717837">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594364003447" />
@@ -279,7 +279,7 @@
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-98.1600.870@0.30.1366.738" timestamp="1594607793741" />
     <state x="1786" y="128" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-98.1600.870@1366.-98.1600.870" timestamp="1594697111278" />
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.30.1600.870@0.30.1366.738" timestamp="1595211781490" />
-    <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1595811633089" />
+    <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1595826717837" />
     <state x="0" y="30" width="648" height="738" key="find.popup" timestamp="1593657397530">
       <screen x="0" y="30" width="1366" height="738" />
     </state>

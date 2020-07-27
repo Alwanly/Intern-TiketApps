@@ -25,14 +25,14 @@
                     <div class="col-lg-4 d-flex justify-content-center">
                         <div class="card card-product" onclick="location.href='{{ route('detailPacket',['id'=>$packet->id]) }}'"  >
                                 <div class="img-brand">
-                                <img class="card-img-top" src="{{ asset('storage/bannerPacket/'.$packet->path_bannerpacket) }}" alt="Card image cap">
+                                <img class="card-img-top" src="{{$packet->path_bannerpacket}}" alt="Card image cap">
                                 </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{$packet->packet_title}}</h5><br>
                                 <br>
-                                <p class="card-text"> <i class="nav-icon fas fa-calendar-alt"></i> {{$packet->detail->getDateTakeoff()}} </p>
+                                <p class="card-text"> <i class="nav-icon fas fa-calendar-alt"></i> {{ \Illuminate\Support\Carbon::parse($packet->takeoff_date)->translatedFormat('l, d M Y')}} </p>
                                 <br>
-                                <p class="card-text"> @currency($packet->price[0]->room->room_price)</p>
+                                <p class="card-text"> @currency($packet->room_price)</p>
                             </div>
                         </div>
                     </div>

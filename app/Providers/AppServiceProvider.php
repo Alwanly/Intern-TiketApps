@@ -42,8 +42,9 @@ class AppServiceProvider extends ServiceProvider
 
         //Format Date indonesia
         Blade::directive('idDate',function ($request){
-            $date = strtotime($request);
-            return Carbon::parse($date)->translatedFormat('l, d M Y');
+
+            $date =  Carbon::parse($request)->translatedFormat('l, d M Y');
+            return ''.$date;
         });
 
         //set For Mysql

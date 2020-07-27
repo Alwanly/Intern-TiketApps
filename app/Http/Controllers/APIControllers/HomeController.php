@@ -5,6 +5,7 @@ namespace App\Http\Controllers\APIControllers;
 use App\Http\Controllers\Controller;
 use App\RoomType;
 use App\UmrohPacket;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function home(){
-        
+
         $packet = DB::table('room_types as rt')
             ->rightJoin('prices as pr','rt.id', '=' ,'pr.room_id')
             ->join('umroh_packets as up', function ($join){
@@ -142,7 +143,8 @@ class HomeController extends Controller
 
     private function getSortByDate(Request $request)
     {
-        $date = $request->date;
+        $date_now = Carbon::now()->toDateString();
+        $date_add3Mont = Carbon::now()->addMonth(3)->toDateString();
         $packet = DB::table('room_types as rt')
             ->rightJoin('prices as pr',function ($join){
                 $join->on('rt.id', '=' ,'pr.room_id');
@@ -154,9 +156,8 @@ class HomeController extends Controller
             ->join('umroh_packet_details as upd','up.id','=','upd.packet_id')
             ->selectRaw('upd.packet_id as id ,up.path_bannerpacket,up.packet_title, MIN(rt.room_price) as room_price,upd.takeoff_date')
             ->groupBy('upd.packet_id')
-            ->orderBy('takeoff_date',$date)
+            ->whereBetween('takeoff_date',[$date_now,$date_add3Mont])
             ->get();
-
         return $packet;
     }
 }

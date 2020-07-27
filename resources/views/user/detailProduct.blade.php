@@ -19,7 +19,7 @@
             <div class="col-4">
                 <div class="img-detail-wrapper">
                     <div class="img-brand">
-                        <img src="{{ asset('storage/bannerPacket/'.$packet->path_bannerpacket) }}" >
+                        <img src="{{ $packet->path_bannerpacket }}" >
                     </div>
                 </div>
             </div>

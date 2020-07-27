@@ -51,8 +51,9 @@ class PacketUmrohController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
-            'banner' => 'required|file|max:2000',
+            'banner' => 'required|file',
             'packet_title' => 'required',
             'packet_desc' => 'required',
             'manasik_date' => 'required|date',
@@ -70,6 +71,8 @@ class PacketUmrohController extends Controller
         $path = 'storage/bannerPacket';
         $status = Storage::disk('banner_packet')->exists($fileName);
         if ($status){
+            $request->session()->flash('status',false);
+            $request->session()->flash('message','error Create Data');
             return redirect()->back();
         }
         $file->move($path,$fileName);

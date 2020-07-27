@@ -96,6 +96,7 @@ Route::prefix('u')->group(function (){
     //Routes guest
     Route::get('/home', 'User\HomeController@index')->name('home');
     Route::get('/listPacket','User\HomeController@show')->name('listPacket');
+    Route::get('/listPacket/search','User\HomeController@packetBySearchAndSorting')->name('searchPacket');
     Route::get('/listPacket/detail/{id}','User\HomeController@detail')->name('detailPacket');
 
     //Routes auth

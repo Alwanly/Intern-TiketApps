@@ -12,91 +12,60 @@
                 </nav>
             </div>
         </div>
+
     </div>
     <div class="container">
-        <div class="row">
-         {{--  <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-filer" onclick="" >
-                    <div class="card-header">
-                        <h5 class="card-title"> Filter</h5>
+        <div class="search p-3 d-flex align-items-center justify-content-center">
+            <div class="row">
+                <form class="form-inline" method="get" action="{{route('searchPacket')}}">
+                    <div class="form-group mb-2">
+                        <input type="hidden" name="type" value="search">
+                        <select id="type" class="form-control">
+                            <option value="name" >Nama</option>
+                            <option value="date">Tanggal</option>
+                        </select>
                     </div>
-                    <div class="card-body">
-                        <div class="card-filter">
-                            <div class="row">
-                                <div class="col-5 card-filter-title justify-content-center">
-                                    <h5>Date</h5>
-                                </div>
-                                <div class="col-4"></div>
-                                <div class="card-filter-icon col-auto text-right">
-                                    <a class="" type="button" data-toggle="collapse" href="#list-date"  aria-label="Toggle navigation">
-                                        <span class="nav-icon fa fa-list"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <ul id="list-date" class="list-group collapse show">
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">2020</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">2021</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">2022</label>
-                                </div>
-                            </li>
-                        </ul>
-                        </div>
-                        <hr>
-                        <div class="card-filter">
-                            <div class="row">
-                                <div class="col-5 card-filter-title justify-content-center">
-                                    <h5>Airlines</h5>
-                                </div>
-                                <div class="col-4"></div>
-                                <div class="card-filter-icon col-auto text-right">
-                                    <a class="" type="button" data-toggle="collapse" href="#list-airlines"  aria-label="Toggle navigation">
-                                        <span class="nav-icon fa fa-list"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <ul id="list-airlines" class="list-group collapse show">
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Garuda</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Lion Air</label>
-                                </div>
-                            </li>
-                        </ul>
-                        </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" class="sr-only">Password</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="search...">
+                        <input type="date" hidden disabled name="date" class="form-control" id="date" placeholder="search...">
                     </div>
+                    <button type="submit" class="btn btn-primary mb-2"><i class="nav-icon fas fa-search"></i> </button>
+                </form>
+                <div class="form-inline"></div>
+            </div>
+            <div class="row ml-4">
+                <div class="form-group mb-2">
+                    <input type="hidden" id="type-sort" name="type" value="sort">
+                    <select id="sort" class="form-control">
+                        <option selected disabled>Sort</option>
+                        <option value="desc"  data-type="price">Harga Mahal - Murah</option>
+                        <option value="asc" data-type="price" >Harga Murah - Mahal </option>
+                        <option value="{{\Illuminate\Support\Carbon::now()->toDateString()}}" data-type="date" >Tanggal terdekat </option>
+                    </select>
                 </div>
-            </div>--}}
+            </div>
+        </div>
+        @if(empty($packets->items()[0]->id))
+            <div class="alert alert-warning" role="alert">
+                Packet Tidak di temukan
+            </div>
+        @endif
+        <div class="row">
             <div class="col-lg-12 col-md-6 col-sm-12">
                 <div class="row">
                     @foreach($packets as $packet)
-                        <div class="col-lg-4 d-flex justify-content-center p-3">
+                        <div class="col-lg-4 d-flex justify-content-center">
                             <div class="card card-product" onclick="location.href='{{ route('detailPacket',['id'=>$packet->id]) }}'"  >
                                 <div class="img-brand">
-                                    <img class="card-img-top" src="{{ asset('storage/bannerPacket/'.$packet->path_bannerpacket) }}" alt="Card image cap">
+                                    <img class="card-img-top" src="{{$packet->path_bannerpacket}}" alt="Card image cap">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$packet->packet_title}}</h5>
-                                    <p class="card-text d-block"> <i class="nav-icon fas fa-calendar-alt"></i> {{$packet->detail->getDateManasik()}}</p>
-                                    <p class="card-text">@currency($packet->price[0]->room->room_price)</p>
+                                    <h5 class="card-title">{{$packet->packet_title}}</h5><br>
+                                    <br>
+                                    <p class="card-text"> <i class="nav-icon fas fa-calendar-alt"></i> {{ \Illuminate\Support\Carbon::parse($packet->takeoff_date)->translatedFormat('l, d M Y')}} </p>
+                                    <br>
+                                    <p class="card-text"> @currency($packet->room_price)</p>
                                 </div>
                             </div>
                         </div>
@@ -113,3 +82,28 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script>
+        $('#type').change(function () {
+            $type = $(this).val();
+            if ($type == 'name'){
+                $('#date').attr('hidden','');
+                $('#date').attr('disable','');
+                $('#name').removeAttr('hidden');
+                $('#name').removeAttr('disable');
+            }
+            if ($type == 'date'){
+                $('#name').attr('hidden','');
+                $('#name').attr('disable','');
+                $('#date').removeAttr('hidden');
+                $('#date').removeAttr('disabled');
+            }
+        });
+        $('#sort').change(function () {
+            $type = $('#type-sort').attr('value');
+            $value = $('#sort').val();
+            $name = $('#sort').find(':selected').data('type');
+            location.href= '/u/listPacket/search?type='+$type+'&'+$name+'='+$value+'';
+        })
+    </script>
+@endpush('js')
