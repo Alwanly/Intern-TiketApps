@@ -53,15 +53,17 @@ class HomeController extends Controller
             ->with(['price' => function($q)
             {$q->select(['id','room_id','packet_id']);
                 $q->with(['room' => function($q)
-                {$q->select(['id','room_name','room_price','room_capacity']);}]);}])
+                {                    
+                    $q->select(['id','room_name','room_price','room_capacity']);
+                }]);}])
             ->with(['detail'=>function($q){
                 $q->select(['id','packet_id','takeoff_date','manasik_date','return_date','duration','quota','note']);
             }])
             ->with(['airline'=>function($q){
                 $q->select(['id','airlines_name']);
             }])
-            ->get();
-        $packet->makeHidden(['category_id','airline_id','status_id','created_at','updated_at']);
+            ->first();
+        $packet->makeHidden(['category_id','airline_id','status_id','created_at','updated_at']);        
         return response()->json($packet,200);
     }
 

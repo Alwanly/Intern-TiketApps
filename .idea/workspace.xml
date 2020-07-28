@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APIControllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PacketUmrohController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PacketUmrohController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/detailProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/detailProduct.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/listProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/listProduct.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/transaction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/transaction.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,7 +196,7 @@
       <workItem from="1595472252816" duration="17572000" />
       <workItem from="1595571593889" duration="14563000" />
       <workItem from="1595811630088" duration="10301000" />
-      <workItem from="1595826717759" duration="9632000" />
+      <workItem from="1595826717759" duration="9688000" />
     </task>
     <servers />
   </component>

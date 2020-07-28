@@ -23,7 +23,7 @@ class OtpVerify
             return response()->json([
                 'status'=>false,
                 'message'=>'Account not Verify'
-            ]);
+            ],401);
         }
         return $next($request);
     }
