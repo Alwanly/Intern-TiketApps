@@ -48,6 +48,7 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function getJSONUser(){
+        
         return [
             'id'=>$this->attributes['id'],
             'email'=>$this->attributes['email'],
@@ -58,7 +59,10 @@ class User extends Authenticatable implements JWTSubject
                 'path_photoprofil'=>$this->userDetail->path_photoprofil,
                 'address'=>$this->userDetail->address
                 ],
-            'otp' => $this->otp
+            'otp' => [
+                'code_otp'=> $this->otp->code_otp,
+                'status' => ($this->otp->status_id == 2) ? true : false
+                ]
         ];
     }
 

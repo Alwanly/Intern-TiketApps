@@ -22,6 +22,7 @@ class LoginController extends Controller
             return response()->json(['status'=>false,'message'=>'Error generate Token'],500);
         }
         $user = User::find(JWTAuth::user()->id);
+        
         return response()->json(['status'=>true,'message'=>'Login Success','content'=>['user'=>$user->getJSONUser(),'token'=>$token]]);
     }
 
@@ -68,15 +69,17 @@ class LoginController extends Controller
     }
 
     public function otp(Request $request){
-        $otp = OTPUser::where('user_id',$request->user_id)->get();
+        $user_id = $request->user_id;
+        $code = $request->code_otp;
+        $otp = OTPUser::where('user_id',$user_id)->get();
 
-        if ($otp[0]->code_otp != $request->code_otp){
+        if ($otp[0]->code_otp != $code){
             return response()->json(['status'=>false,'message'=>'Code OTP Invalid']);
         }
 
         $otp[0]->status_id = 2;
         $otp[0]->save();
-        return response()->json(['status'=>$otp,'message'=>'Code OTP berhasil']);
+        return response()->json(['status'=>true,'message'=>'Code OTP berhasil']);
 //        return response()->json($otp->code_otp);
     }
 

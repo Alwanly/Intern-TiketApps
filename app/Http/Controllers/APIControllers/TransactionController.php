@@ -21,12 +21,12 @@ class TransactionController extends Controller
     public function index(Request $request){
         $packet = UmrohPacket::where('id',$request->packet_id)->with(['detail'=>function($q){
             $q->select(['id','packet_id','takeoff_date','manasik_date','return_date']);
-        }])->select('id')->get();
+        }])->select('id')->first();
         $price = Price::where('id',$request->price_id)->with(['room'=>function($q){
             $q->select(['id','room_name','room_price','room_capacity']);
-        }])->select(['id','room_id','packet_id'])->get();
+        }])->select(['id','room_id','packet_id'])->first();
         $bank = BankMaster::all();
-        $bank->makeHidden(['created_at','updated_at','status_id']);
+        $bank->makeHidden(['created_at','updated_at','status_id','method_id']);
 
         return response()->json([
             'packet'=>$packet,
