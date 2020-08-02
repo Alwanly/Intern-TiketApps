@@ -35,48 +35,48 @@ class TransactionController extends Controller
         ],200);
     }
 
-    public function purchase(Request $request){
-        $data = $request->all();
-        $price = Price::find($data['price_id']);
+    public function purchase(Request $request){              
+        $price = Price::find($request['price_id']);
+        $token = JWTAuth::parseToken()->authenticate();
+        $user_id = $token->id;
         $transaction = Transaction::create([
-            'user_id' =>Auth::id(),
+            'user_id' =>$user_id,
             'packet_id'=>$price->packet->id,
             'price_id'=>$price->id,
             'status_id'=>4,
-            'code_agent'=> $request->code_agent,
+            'code_agent'=>$request['code_agent'],
         ])->id;
 
-        $date = Carbon::now()->toDateString();
+        $date = Carbon::now()->toDateString();  
+        
+        for ($i = 0 ; $i< count($request['name_jamaah']) ; $i++){
+            $photo = $request['ktp_jamaah'][$i];
 
-        for ($i = 0 ; $i< count($data['name_jamaah']) ; $i++){
-            $file = $data['ktp_jamaah'][$i];
-            $nameJamaah = $data['name_jamaah'][$i];
-            $namefile = str_replace(' ','_',$nameJamaah);
-            $filename = $date.'_'.$namefile.'.'.$file->getClientOriginalExtension();
-
-            $path = 'storage/ktpJamaah';
-
-            $file->move($path,$filename);
-            $namePhoto = asset($path.'/'.$filename);
+            $nameJamaah = $request['name_jamaah'][$i];
+            $namefile = str_replace(' ','_',$nameJamaah);                                  
+            $path = 'storage/ktpJamaah/'.$namefile.'.jpeg';
+            
+            $photoUrl = asset('/'.$path);            
+            file_put_contents($path,base64_decode($photo));
             TransactionDetail::create([
                 'transaction_id'=>$transaction,
-                'jamaah_name'=>$data['name_jamaah'][$i],
-                'jamaah_gender'=>$data['gender_jamaah'][$i],
-                'jamaah_telephone'=>$data['number_jamaah'][$i],
-                'jamaah_path_photoktp'=>$namePhoto
+                'jamaah_name'=>$request['name_jamaah'][$i],
+                'jamaah_gender'=>$request['gender_jamaah'][$i],
+                'jamaah_telephone'=>$request['phone_jamaah'][$i],
+                'jamaah_path_photoktp'=>$photoUrl
             ]);
         }
 
         $payment = Payment::create([
-            'bank_id'=> $data['bank'],
+            'bank_id'=> $request['bank'],
             'transaction_id'=>$transaction,
             'nominal' => $price->room->room_price,
             'status_id' => 10
         ])->id;
         return response()->json([
             'status'=>true,
-            'message'=>'Berhasil',
-            'content'=> ['payment_id'=>$payment]
+            'message'=> 'Transaction Berhasil Dibuat',
+            'content'=> ['payment_id'=>$payment           ]
         ],200);
     }
 
