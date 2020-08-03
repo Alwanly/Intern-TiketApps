@@ -32,6 +32,7 @@ Route::middleware(['jwt.verify','otp.verify'])->group(function (){
     Route::get('purchase','APIControllers\TransactionController@index');
     Route::post('purchase/buy','APIControllers\TransactionController@purchase');
     Route::get('purchase/list','APIControllers\TransactionController@showList');
+    
     //check code agent
     Route::post('checkCodeAgent','APIControllers\TransactionController@checkCodeAgent');
 

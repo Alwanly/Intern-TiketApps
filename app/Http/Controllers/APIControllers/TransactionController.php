@@ -91,8 +91,8 @@ class TransactionController extends Controller
         }
 
         return response()->json([
-            'status'=>$status
-            ,'message'=>$message
+            'status'=>$status,
+            'message'=>$message
         ],200);
     }
 
@@ -121,7 +121,7 @@ class TransactionController extends Controller
             ->get();
         $trs->makeHidden(['packet_id','status_id','updated_at']);
         return response()->json([
-            "trs"=>$trs
+            "transactions"=>$trs
         ],200);
     }
 }
