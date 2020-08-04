@@ -59,8 +59,9 @@ class PaymentController extends Controller
             'path_photoproof' => $url
         ]);
 
-        $payment = Payment::find($paymentC->payment_id)->update(['status_id'=>11]);
-
+        $payment = Payment::find($paymentC->payment_id);
+        $trId = $payment->transaction_id;
+        $payment->update(['status_id'=>11]);        
         return response()->json([
             'status'=>true,
             'message'=>'Payment Confirm Success',

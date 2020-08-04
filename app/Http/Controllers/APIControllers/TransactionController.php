@@ -76,7 +76,7 @@ class TransactionController extends Controller
         return response()->json([
             'status'=>true,
             'message'=> 'Transaction Berhasil Dibuat',
-            'content'=> ['payment_id'=>$payment           ]
+            'content'=> ['payment_id'=>$payment]
         ],200);
     }
 
@@ -102,23 +102,41 @@ class TransactionController extends Controller
         $token = JWTAuth::parseToken()->authenticate();
         $user_id = $token->id;
         $request = $request->id;
-        $trs = Transaction::with(['packet'=>function($q){
-               $q->select(['id','path_bannerpacket','packet_title']);
-        },'packet.detail'=>function($q){
-            $q->select('packet_id','takeoff_date');
-        },'price'=>function($q){
-            $q->select(['id','room_id']);
-        },'price.room'=>function($q){
-            $q->select(['id','room_name','room_price']);
-        },'payment'=>function($q){
-            $q->select(['id','transaction_id']);
-        }])
-            ->with(['status'=>function($q){
-                $q->select(['id','status_name']);
+        if(empty($request)){
+            $trs = Transaction::with(['packet'=>function($q){
+                $q->select(['id','path_bannerpacket','packet_title']);
+            },'packet.detail'=>function($q){
+                $q->select('packet_id','takeoff_date');
+            },'price'=>function($q){
+                $q->select(['id','room_id']);
+            },'price.room'=>function($q){
+                $q->select(['id','room_name','room_price']);
+            },'payment'=>function($q){
+                $q->select(['id','transaction_id']);
             }])
-            ->where('user_id',$user_id)
-            ->where('status_id',$request)
-            ->get();
+                ->with(['status'=>function($q){
+                    $q->select(['id','status_name']);
+                }])
+                ->where('user_id',$user_id)->get();            
+        }else{
+            $trs = Transaction::with(['packet'=>function($q){
+                $q->select(['id','path_bannerpacket','packet_title']);
+            },'packet.detail'=>function($q){
+                $q->select('packet_id','takeoff_date');
+            },'price'=>function($q){
+                $q->select(['id','room_id']);
+            },'price.room'=>function($q){
+                $q->select(['id','room_name','room_price']);
+            },'payment'=>function($q){
+                $q->select(['id','transaction_id']);
+            }])
+                ->with(['status'=>function($q){
+                    $q->select(['id','status_name']);
+                }])
+                ->where('status_id',$request)
+                ->where('user_id',$user_id)->get(); 
+        }
+          
         $trs->makeHidden(['packet_id','status_id','updated_at']);
         return response()->json([
             "transactions"=>$trs

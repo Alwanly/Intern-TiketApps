@@ -23,8 +23,14 @@ class AccountController extends Controller
         $user = User::where('id',$token->id)
             ->with(['userDetail'=>function($q){
             $q->select(['id','user_id','gender','path_photoprofile','address']);
+        },'agent'=>function($q){
+            $q->select(['id','user_id','code_agent',"agent_type_id",'status_id']);
+        },'agent.type' =>function($q){
+            $q->select(['id','title']);
+        },'agent.status' =>function($q){
+            $q->select(['id','status_name']);
         }])
-            ->get();
+            ->first();
         $user->makeHidden(['created_at','updated_at','role_id','status_id']);
         return response()->json($user);
     }
@@ -34,26 +40,22 @@ class AccountController extends Controller
         $user = User::find($token->id);
         $detail = UserDetail::where('user_id',$user->id);
 
-        if ($request->has('name'))  $user->name = $request->name;
-        if ($request->has('telephone'))  $user->telephone = $request->telephone;
-        if ($request->has('gender'))  $detail->update(['gender'=>$request->gender]);
-        if ($request->has('address')) $detail->update(['address'=>$request->address]);
-        if ($request->has('profile')) {
-            try {
-                $file = $request->file('profile');
-                $name = str_replace(' ','_',$user->name);
-                $filname = time() . '_' . $name . '.' . $file->getClientOriginalExtension();
-                $path = 'storage/profile';
-                $file->move($path, $filname);
-                $url = asset('storage/profile/'.$filname);
-                $detail->update([
-                    'path_photoprofile' => $url
-                ]);
-            }catch (FileException $exception){
-                return response()->json(['status'=>false,'message'=>'Size Photo Terlalu besar'],502);
-            }
-        }
+        $user->name = $request->name;
+        $user->telephone = $request->telephone;
+        $detail->update(['gender'=>$request->gender]);
+        $detail->update(['address'=>$request->address]);      
+       
+        $file = $request->profile;
+        $name = str_replace(' ','_',$user->name);
+        $filename = time() . '_' . $name   ;
+        $path = 'storage/profile/'.$filename.'.jpeg';
+        $url = asset('/'.$path);
 
+        file_put_contents($path,base64_decode($file));
+        $detail->update([
+            'path_photoprofile' => $url
+        ]); 
+                   
         $user->save();
         $status  = (!empty($user) && $detail)? true : false;
 
@@ -67,10 +69,11 @@ class AccountController extends Controller
 
         $dateDaftar = Carbon::now()->toDateString();
         $code = $this->getCodeAgent();
-        $file = $request->file('photo');
-        $filname = $dateDaftar.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
-        $path = 'storage/agentKTP';
-        $file->move($path,$filname);
+        $file = $request->ktp;
+        $filename = $dateDaftar.'_'.$request->norekening.'.jpeg';
+        $path = 'storage/agentKTP/'.$filename;
+        $url = asset('/'.$path);
+        file_put_contents($path,base64_decode($file));
         $token = JWTAuth::parseToken()->authenticate();
         $check = Agent::where('user_id',$token->id)->get();
 
@@ -82,7 +85,7 @@ class AccountController extends Controller
                 'bank_id' => $request->bank_id,
                 'norekening' => $request->norekening,
                 'name_rekening' => $request->name_rekening,
-                'path_photoktp' => $filname,
+                'path_photoktp' => $url,
                 'status_id' => 17
             ])->orderByDesc('id')->first();
             $message = "Berhasil Daftar Agent";
@@ -92,7 +95,7 @@ class AccountController extends Controller
                     'bank_id' => $request->bank_id,
                     'norekening' => $request->norekening,
                     'name_rekening' => $request->name_rekening,
-                    'path_photoktp' => $filname,
+                    'path_photoktp' => $url,
                     'status_id' => 17
                 ]);
 
@@ -105,7 +108,7 @@ class AccountController extends Controller
             'status' => $status,
             'message'=> $message,
             'content' => ['agent_id'=>$agent->id]
-        ]);
+        ],200);
     }
 
     public function getCodeAgent()
