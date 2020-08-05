@@ -90,12 +90,12 @@ class LoginController extends Controller
             auth('api')->logout();
 
             return response()->json([
-                'success' => true,
+                'status' => true,
                 'message' => 'User logged out successfully'
             ]);
         } catch (JWTException $exception) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'Sorry, the user cannot be logged out'
             ], 500);
         }

@@ -75,7 +75,7 @@ class HomeController extends Controller
             if ($request->has('date')) $packet = $this->getPacketByDate($request);
         }
         if ($request->type == 'sort'){
-            if ($request->has('price')) $packet = $this->getSortByPrice($request);
+            if ($request->has('name')) $packet = $this->getSortByPrice($request);
             if ($request->has('date')) $packet = $this->getSortByDate($request);
         }
         return response()->json($packet,200);
@@ -125,7 +125,7 @@ class HomeController extends Controller
     private function getSortByPrice(Request $request)
     {
 
-        $price = $request->price;
+        $price = $request->name;
         $packet = DB::table('room_types as rt')
             ->rightJoin('prices as pr',function ($join){
                 $join->on('rt.id', '=' ,'pr.room_id');
