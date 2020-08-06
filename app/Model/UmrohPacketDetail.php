@@ -17,14 +17,14 @@ class UmrohPacketDetail extends Model
     }
 
     public function getDateManasik(){
-        return Carbon::parse($this->attributes['manasik_date'])->translatedFormat('l, d M Y');
+        return Carbon::parse($this->attributes['manasik_date'])->translatedFormat('l, d F Y');
     }
 
     public function getDateTakeoff(){
-        return Carbon::parse($this->attributes['takeoff_date'])->translatedFormat('l, d M Y');
+        return Carbon::parse($this->attributes['takeoff_date'])->translatedFormat('l, d F Y');
     }
     public function getDateReturn(){
-        return Carbon::parse($this->attributes['return_date'])->translatedFormat('l, d M Y');
+        return Carbon::parse($this->attributes['return_date'])->translatedFormat('l, d F Y');
     }
 
 }

@@ -89,31 +89,31 @@ class TransactionController extends Controller
     public function showList($request){
         $user_id = Auth::user()->id;
         if ($request == 0){
-            $trs = Transaction::where('user_id',$user_id)->get();
+            $trs = Transaction::where('user_id',$user_id)->orderBy('created_at','desc')->get();
             $tabs = $request;
         }
         if ($request == 1){
-            $trs = Transaction::where('status_id',4)->where('user_id',$user_id)->get();
+            $trs = Transaction::where('status_id',4)->where('user_id',$user_id)->orderBy('created_at','desc')->get();
             $tabs = $request;
         }
         if ($request == 2){
-            $trs = Transaction::where('status_id',5)->where('user_id',$user_id)->get();
+            $trs = Transaction::where('status_id',5)->where('user_id',$user_id)->orderBy('created_at','desc')->get();
             $tabs = $request;
         }
         if ($request == 3){
-            $trs = Transaction::where('status_id',6)->where('user_id',$user_id)->get();
+            $trs = Transaction::where('status_id',6)->where('user_id',$user_id)->orderBy('created_at','desc')->get();
             $tabs = $request;
         }
         if ($request == 4){
-            $trs = Transaction::where('status_id',7)->where('user_id',$user_id)->get();
+            $trs = Transaction::where('status_id',7)->where('user_id',$user_id)->orderBy('created_at','desc')->get();
             $tabs = $request;
         }
         if ($request == 5){
-            $trs = Transaction::where('status_id',8)->where('user_id',$user_id)->get();
+            $trs = Transaction::where('status_id',8)->where('user_id',$user_id)->orderBy('created_at','desc')->get();
             $tabs = $request;
         }
         if ($request == 6){
-            $trs = Transaction::where('status_id',9)->where('user_id',$user_id)->get();
+            $trs = Transaction::where('status_id',9)->where('user_id',$user_id)->orderBy('created_at','desc')->get();
             $tabs = $request;
         }
 

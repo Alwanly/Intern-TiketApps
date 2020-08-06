@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     public function index(){
-        $transactions = Transaction::all();
+        $transactions = Transaction::orderBy('created_at','desc')->get();
         return view('admin.transaction.transactionList',['transactions'=>$transactions]);
     }
     public function detail($id){

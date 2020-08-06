@@ -12,7 +12,7 @@ class Payment extends Model
         ['transaction_id','bank_id','nominal','status_id'];
 
     public function getDateUpdate(){
-        return Carbon::parse($this->attributes['updated_at'])->translatedFormat('l, d M Y');
+        return Carbon::parse($this->attributes['updated_at'])->translatedFormat('l, d F Y');
     }
     public function status(){
         return $this->belongsTo('App\StatusMaster','status_id','id');

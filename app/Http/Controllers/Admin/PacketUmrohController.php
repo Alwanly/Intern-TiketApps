@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Storage;
 class PacketUmrohController extends Controller
 {
     public function index(){
-        $packets = UmrohPacket::paginate(10);
+        $packets = UmrohPacket::orderBy('created_at','desc')->get();
         return view('admin.packetumroh.packetList',[
             'packets'=>$packets
         ]);

@@ -42,7 +42,7 @@ class HomeController extends Controller
             })
             ->join('umroh_packet_details as upd','up.id','=','upd.packet_id')
             ->selectRaw('upd.packet_id as id ,up.path_bannerpacket,up.packet_title, MIN(rt.room_price) as room_price,upd.takeoff_date')
-            ->groupBy('upd.packet_id')
+            ->groupBy('upd.packet_id')            
             ->get();
         return response()->json($packet,200);
     }

@@ -15,7 +15,7 @@ class UmrohPacket extends Model
 
 
     public function getDateCreate(){
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d M Y');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
     }
 
     public function status(){

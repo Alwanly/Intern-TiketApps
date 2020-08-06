@@ -117,7 +117,9 @@ class TransactionController extends Controller
                 ->with(['status'=>function($q){
                     $q->select(['id','status_name']);
                 }])
-                ->where('user_id',$user_id)->get();            
+                ->where('user_id',$user_id)
+                ->orderBy('created_at','desc')
+                ->get();            
         }else{
             $trs = Transaction::with(['packet'=>function($q){
                 $q->select(['id','path_bannerpacket','packet_title']);
@@ -134,7 +136,9 @@ class TransactionController extends Controller
                     $q->select(['id','status_name']);
                 }])
                 ->where('status_id',$request)
-                ->where('user_id',$user_id)->get(); 
+                ->where('user_id',$user_id)
+                ->orderBy('created_at','desc')
+                ->get(); 
         }
           
         $trs->makeHidden(['packet_id','status_id','updated_at']);

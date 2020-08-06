@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class AgentController extends Controller
 {
     public function index(){
-        $agents = Agent::all();
+        $agents = Agent::orderBy('created_at','desc')->get();
         return view('admin.agents.agentLists',['agents' => $agents]);
     }
 

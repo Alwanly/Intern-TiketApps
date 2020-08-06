@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class PaymentController extends Controller
 {
     public function index(){
-        $payments = Payment::all();
+        $payments = Payment::orderBy('created_at','desc')->get();
         return view('admin.payment.paymentList',['payments'=>$payments]);
     }
 
