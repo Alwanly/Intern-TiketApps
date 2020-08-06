@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +25,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+         $schedule->call(function (){
+             DB::table('payments')
+                 ->whereRaw("created_at <= DATE_SUB(NOW(),INTERVAL 1 day) AND status_id = 10")
+                 ->update(['status_id'=>15]);
+             DB::table("transactions")
+                 ->whereRaw("created_at <= DATE_SUB(NOW(),INTERVAL 1 day) AND status_id = 4")
+                 ->update(['status_id'=>15]);
+         })
+             ->daily();
     }
 
     /**

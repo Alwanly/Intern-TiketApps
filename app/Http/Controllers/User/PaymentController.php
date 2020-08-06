@@ -9,6 +9,7 @@ use App\PaymentConfirm;
 use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -47,12 +48,13 @@ class PaymentController extends Controller
         return response()->json(['status',$payment]);
     }
 
-    public function expired($id, Request $request){
-        $status = Payment::find($id);
-        Transaction::find($status->transaction_id)->update(['status_id'=>15]);
-        $status->update([
-            'status_id'=> 15
-        ]);
+    public function expired(){
+        DB::table('payments')
+            ->whereRaw("created_at <= DATE_SUB(NOW(),INTERVAL 1 day) AND status_id = 10")
+            ->update(['status_id'=>15]);
+        DB::table("transactions")
+            ->whereRaw("created_at <= DATE_SUB(NOW(),INTERVAL 1 day) AND status_id = 4")
+            ->update(['status_id'=>15]);
 
         return response()->json([
             'status'=>$status,

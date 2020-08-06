@@ -114,8 +114,9 @@
     <script>
         $('.modal-view').on('click',function () {
             var name = $(this).data('name');
-            var dataImg = $(this).data('img');
-            var img =" {{asset('storage/ktpJamaah/')}}"+"/"+dataImg;
+            var $dataImg = $(this).data('img');
+            var img =$dataImg;
+            console.log(img);
             $('#ktpJamaah').attr('src',img);
             document.getElementById('name-jamaah').innerHTML=name;
         })

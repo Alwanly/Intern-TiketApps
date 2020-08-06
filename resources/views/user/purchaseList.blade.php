@@ -77,7 +77,6 @@
 @push('js')
     <script>
         $(document).ready(function () {
-            // var menu = $('.purchase-list-tab').filter('.purchase-list-tab-selected');
             var select = '{!! $tabs !!}';
             console.log(select);
             $('.purchase-list-tab').each(function (index) {

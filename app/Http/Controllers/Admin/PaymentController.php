@@ -37,6 +37,11 @@ class PaymentController extends Controller
                 'status_id' => 5
             ]);
         }
+        if ($status == 13 ){
+            Transaction::find($id)->update([
+                'status_id' => 13
+            ]);
+        }
         $request->session()->flash('status',true);
         $request->session()->flash('message','Successfully Update  Data');
 

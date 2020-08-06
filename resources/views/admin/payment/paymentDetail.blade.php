@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputCity">Transfer Photo</label> <br>
-                                <img src="{{asset('storage/photoTransfer/'.$paymentConfirm->path_photoproof)}}" style="width: 300px;height: 150px" class="img-thumbnail" >
+                                <img src="{{$paymentConfirm->path_photoproof}}" style="width: 300px;height: 150px" class="img-thumbnail" >
                             </div>
                             @if($payment->status->status_name == 'Menunggu Konfirmasi' )
                             <button type="submit" name="submit" id="accept" class="btn btn-primary btn-md" value="Accept">Accept</button>

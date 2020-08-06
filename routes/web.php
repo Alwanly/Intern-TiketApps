@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/user',"UserController@index");
+Route::get('payment/expired','User\PaymentController@expired')->name('paymentExpired');
 
 Auth::routes();
 
@@ -110,7 +111,7 @@ Route::prefix('u')->group(function (){
         //payment
         Route::get('/payment/{id}','User\PaymentController@index')->name('paymentIndex');
         Route::post('/payment/confirm','User\PaymentController@confirm')->name('paymentConfirm');
-        Route::get('/payment/expired/{id}','User\PaymentController@expired')->name('paymentExpired');
+        Route::get('/payment/expired','User\PaymentController@expired')->name('paymentExpired');
 
         //purchase list
         Route::get('/purchase-list/{id}','User\TransactionController@showList')->name('purchaseShow');

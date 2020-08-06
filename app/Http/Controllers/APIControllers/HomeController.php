@@ -71,12 +71,12 @@ class HomeController extends Controller
 
         $packet = null;
         if ($request->type == 'search'){
-            if ($request->has('name')) $packet = $this->getPacketByName($request);
-            if ($request->has('date')) $packet = $this->getPacketByDate($request);
+            if ($request->name != "") $packet = $this->getPacketByName($request);
+            if ($request->date != "") $packet = $this->getPacketByDate($request);
         }
         if ($request->type == 'sort'){
-            if ($request->has('name')) $packet = $this->getSortByPrice($request);
-            if ($request->has('date')) $packet = $this->getSortByDate($request);
+            if ($request->name != "") $packet = $this->getSortByPrice($request);
+            if ($request->date != "") $packet = $this->getSortByDate($request);
         }
         return response()->json($packet,200);
     }
