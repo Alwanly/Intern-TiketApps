@@ -142,7 +142,6 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
             $('#paymentConfirm').submit(function (e) {
                 e.preventDefault();
                 var dataForm = new FormData(this);
