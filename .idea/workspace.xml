@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/paymentConfirm.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/paymentConfirm.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +216,7 @@
       <workItem from="1595826717759" duration="9688000" />
       <workItem from="1596682683835" duration="4416000" />
       <workItem from="1596946866862" duration="279000" />
-      <workItem from="1597225575753" duration="8388000" />
+      <workItem from="1597225575753" duration="8501000" />
     </task>
     <servers />
   </component>
@@ -303,13 +303,13 @@
     <state x="1763" y="79" key="run.anything.popup/0.30.1366.738/1366.-98.1600.870@1366.-98.1600.870" timestamp="1594711692843" />
     <state x="1763" y="207" key="run.anything.popup/0.30.1366.738/1366.30.1600.870@1366.30.1600.870" timestamp="1595234816985" />
     <state x="339" y="180" key="run.anything.popup/0.30.1366.738@0.30.1366.738" timestamp="1595573912499" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1597236848299">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1597237404803">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594369239300" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593404250915" />
     <state x="1771" y="-28" width="788" height="800" key="search.everywhere.popup/0.30.1366.738/1366.-98.1600.870@1366.-98.1600.870" timestamp="1594698145373" />
     <state x="1771" y="100" width="788" height="800" key="search.everywhere.popup/0.30.1366.738/1366.30.1600.870@1366.30.1600.870" timestamp="1595235362333" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738@0.30.1366.738" timestamp="1597236848299" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.30.1366.738@0.30.1366.738" timestamp="1597237404803" />
   </component>
 </project>
