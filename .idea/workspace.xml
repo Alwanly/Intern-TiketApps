@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/accountProfile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/accountProfile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/purchaseList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/purchaseList.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/StatusMasterTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/StatusMasterTableSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +205,7 @@
       <workItem from="1595826717759" duration="9688000" />
       <workItem from="1596682683835" duration="4416000" />
       <workItem from="1596946866862" duration="279000" />
+      <workItem from="1597225575753" duration="3889000" />
     </task>
     <servers />
   </component>
@@ -266,7 +269,7 @@
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1593763216772" />
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738/1366.-138.1600.870@0.30.1366.738" timestamp="1593421306960" />
     <state x="517" y="318" key="NewPhpFileDialog/0.30.1366.738@0.30.1366.738" timestamp="1594009655422" />
-    <state x="359" y="222" key="com.intellij.ide.util.TipDialog" timestamp="1596682683802">
+    <state x="359" y="222" key="com.intellij.ide.util.TipDialog" timestamp="1597225576641">
       <screen x="0" y="30" width="1366" height="738" />
     </state>
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-108.1600.870@0.30.1366.738" timestamp="1594364003447" />
@@ -274,7 +277,7 @@
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-98.1600.870@0.30.1366.738" timestamp="1594607793741" />
     <state x="1786" y="128" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.-98.1600.870@1366.-98.1600.870" timestamp="1594697111278" />
     <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738/1366.30.1600.870@0.30.1366.738" timestamp="1595211781490" />
-    <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1596682683802" />
+    <state x="359" y="222" key="com.intellij.ide.util.TipDialog/0.30.1366.738@0.30.1366.738" timestamp="1597225576641" />
     <state x="0" y="30" width="648" height="738" key="find.popup" timestamp="1593657397530">
       <screen x="0" y="30" width="1366" height="738" />
     </state>

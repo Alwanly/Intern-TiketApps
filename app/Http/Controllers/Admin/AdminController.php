@@ -16,6 +16,7 @@ class AdminController extends Controller
 {
 
     public function index (){
+
         $date  = Carbon::now()->toDateString();
         $packet = UmrohPacket::where('status_id',2)->get();
         $packet = count($packet);
@@ -25,9 +26,11 @@ class AdminController extends Controller
         $tr = count($tr);
 
         $py_total = count(Payment::all());
-        $py_success = count(Payment::where('status_id',12)->get());
-
-        $py = round(($py_success/$py_total)*100);
+        $py = 0;
+        if ($py_total != 0 ) {
+            $py_success = count(Payment::where('status_id', 12)->get());
+            $py = round(($py_success / $py_total) * 100);
+        }
 
         return view('admin.dashboard',[
             'packet'=>$packet,
