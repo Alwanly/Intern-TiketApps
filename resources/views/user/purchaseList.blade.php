@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="order-img-warpper">
-                                            <img src="{{asset('storage/bannerPacket/'.$tr->packet->path_bannerpacket)}}">
+                                            <img src="{{$tr->packet->path_bannerpacket}}">
                                         </div>
                                     </div>
                                     <div class="col-auto">

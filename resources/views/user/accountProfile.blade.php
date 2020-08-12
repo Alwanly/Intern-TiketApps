@@ -10,7 +10,7 @@
                             @if(empty($user->userDetail->path_photoprofile))
                             <img src="/images/profil_default.png" alt="profile">
                             @else
-                                <img src="{{ asset('storage/profile/'.$user->userDetail->path_photoprofile) }}" alt="profile pic">
+                                <img src="{{ $user->userDetail->path_photoprofile }}" alt="profile pic">
                             @endif
                         </div>
                     </div>
