@@ -104,7 +104,7 @@ Route::prefix('u')->group(function (){
     Route::middleware(['isUser','auth'])->group(function (){
 
         //Transaction order
-        Route::get('/order','User\TransactionController@index')->name('orderPacket');
+        Route::post('/order','User\TransactionController@index')->name('orderPacket');
         Route::post('/order/purchase','User\TransactionController@store')->name('orderStore');
         Route::post('/checkCodeAgent','User\TransactionController@checkCodeAgent')->name('checkCodeAgent');
 

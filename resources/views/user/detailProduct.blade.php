@@ -25,7 +25,7 @@
             </div>
             <div class="col-8">
                 <div class="card">
-                    <form action="{{route('orderPacket')}}" method="get">
+                    <form action="{{route('orderPacket')}}" method="post">
                         @csrf
                     <div class="container" style="padding: 10px">
                     <h3 class="text-tilte">{{$packet->packet_title}}h</h3>
