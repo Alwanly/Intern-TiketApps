@@ -18,7 +18,7 @@ class CreateAgentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('agent_type_id');
             $table->string('code_agent')->unique();
-            $table->unsignedInteger('bank_id');
+            $table->unsignedBigInteger('bank_id');
             $table->integer('norekening');
             $table->string('name_rekening');
             $table->string('path_photoktp');
