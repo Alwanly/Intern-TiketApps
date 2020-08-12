@@ -25,6 +25,7 @@ class CreateAgentsTable extends Migration
             $table->unsignedInteger('status_id');
             $table->timestamps();
 
+            $table->foreign('bank_id')->references('id')->on('bank_masters');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('status_id')->references('id')->on('status_masters');
             $table->foreign('agent_type_id')->references('id')->on('agent_types');

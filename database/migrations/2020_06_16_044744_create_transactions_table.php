@@ -24,6 +24,8 @@ class CreateTransactionsTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('packet_id')->references('id')->on('umroh_packets');
+            $table->foreign("price_id")->references('id')->on('prices');
+            $table->foreign('status_id')->references('id')->on('status_masters');
         });
     }
 

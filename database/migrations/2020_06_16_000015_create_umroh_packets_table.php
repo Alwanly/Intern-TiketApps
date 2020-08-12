@@ -15,6 +15,7 @@ class CreateUmrohPacketsTable extends Migration
     {
         Schema::create('umroh_packets', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('path_bannerpacket');
             $table->string('packet_title');
             $table->string('packet_desc');
             $table->unsignedBigInteger('category_id');

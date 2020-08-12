@@ -23,6 +23,7 @@ class CreatePaymentsTable extends Migration
 
             $table->foreign('bank_id')->references('id')->on('bank_masters');
             $table->foreign('status_id')->references('id')->on('status_masters');
+            $table->foreign('transaction_id')->references('id')->on('transactions');
         });
     }
 

@@ -16,9 +16,8 @@ class CreateUserDetailsTable extends Migration
         Schema::create('user_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->enum('gender',['Male','Female']);
-            $table->integer('telephone');
-            $table->string('path_photoktp');
+            $table->enum('gender',['Pria','Wanita']);
+            $table->string('path_photoprofile');
             $table->string('address');
             $table->timestamps();
 
