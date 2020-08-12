@@ -128,10 +128,7 @@
 @endsection
 @push('js')
     <script>
-
-
         $(document).ready(function(){
-
             var statusPayment = document.getElementById('status').innerText;
             if (statusPayment == "Belum dibayar" || statusPayment == "Pembayaran Ditolak"  ) {
                 $('#btn-confirm').removeAttr('hidden');
@@ -142,7 +139,6 @@
 
             $('#paymentConfirm').submit(function (e) {
                 e.preventDefault();
-                console.log('bisa');
                 var dataForm = new FormData(this);
                 var file = $('#photo')[0].files[0];
                 dataForm.append('file',file,'photo');

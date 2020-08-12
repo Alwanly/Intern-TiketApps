@@ -26,7 +26,6 @@ class PaymentController extends Controller
     public function confirm(Request $request){
         $dateConfirm = Carbon::now()->toDateString();
         $time =  time();
-//
         $file = $request->file('photo');
         $filename = $dateConfirm.'_'.$time.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
         $path = 'storage/photoTransfer';
@@ -57,7 +56,6 @@ class PaymentController extends Controller
             ->update(['status_id'=>15]);
 
         return response()->json([
-            'status'=>$status,
             'message'=>'Pembayaran Expired']);
     }
 }
