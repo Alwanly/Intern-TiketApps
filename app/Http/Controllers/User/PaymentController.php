@@ -24,27 +24,27 @@ class PaymentController extends Controller
     }
 
     public function confirm(Request $request){
-        $dateConfirm = Carbon::now()->toDateString();
-        $time =  time();
-        $file = $request->file('photo');
-        $filename = $dateConfirm.'_'.$time.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
-        $path = 'storage/photoTransfer';
-
-        $file->move($path,$filename);
-        $namePhoto = asset('storage/photoTransfer/'.$filename);
-        $paymentC = PaymentConfirm::create([
-            'payment_id' => $request->payment_id,
-            'bank_id' => $request->bank_id,
-            'norekening' => $request->norekening,
-            'rekening_name'=> $request->rekening_name,
-            'path_photoproof' => $namePhoto,
-        ]);
-
-        $payment = Payment::find($paymentC->payment_id)->update(['status_id'=>11]);
-
-        $request->session()->flash('status',true);
-        $request->session()->flash('message','Payment Confirm Success');
-        return response()->json(['status',$payment]);
+//        $dateConfirm = Carbon::now()->toDateString();
+//        $time =  time();
+//        $file = $request->file('photo');
+//        $filename = $dateConfirm.'_'.$time.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
+//        $path = 'storage/photoTransfer';
+//
+//        $file->move($path,$filename);
+//        $namePhoto = asset('storage/photoTransfer/'.$filename);
+//        $paymentC = PaymentConfirm::create([
+//            'payment_id' => $request->payment_id,
+//            'bank_id' => $request->bank_id,
+//            'norekening' => $request->norekening,
+//            'rekening_name'=> $request->rekening_name,
+//            'path_photoproof' => $namePhoto,
+//        ]);
+//
+//        $payment = Payment::find($paymentC->payment_id)->update(['status_id'=>11]);
+//
+//        $request->session()->flash('status',true);
+//        $request->session()->flash('message','Payment Confirm Success');
+        return response()->json(['status',true]);
     }
 
     public function expired(){
