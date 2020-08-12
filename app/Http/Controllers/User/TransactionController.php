@@ -25,7 +25,7 @@ use Psy\Exception\ThrowUpException;
 class TransactionController extends Controller
 {
     public function index(Request $request){
-        
+
         $price = Price::find($request->price_id);
         $banks = BankMaster::where('status_id',2)->get();
         return view('user.transaction',[

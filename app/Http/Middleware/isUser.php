@@ -17,14 +17,16 @@ class isUser
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        if ($user->role->role =='Admin'){
-            redirect(route('dashboard'));
-        } elseif ($user->role->role =='jamaaah'){
-            redirect(route('home'));
-        }else {
-            return route('login');
+//        if ($user->role->role =='Admin'){
+//            return redirect()->route('dashboard');
+//        } elseif ($user->role->role =='jamaaah'){
+//            return redirect()->route('home');
+//        }else {
+//            return redirect()->route('login');
+//        }
+        if ($user->role->role != 'jamaah') {
+            return redirect()->route('login');
         }
-
         return $next($request);
     }
 }
