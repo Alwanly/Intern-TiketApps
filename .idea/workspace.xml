@@ -3,10 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="24aa87df-d115-4132-9566-e51331d3351d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/StatusMasterTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/StatusMasterTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/masterData/airlines/createAirlines.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/masterData/airlines/createAirlines.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/masterData/category/createCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/masterData/category/createCategory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/masterData/createBank.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/masterData/createBank.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/masterData/createRekening.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/masterData/createRekening.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/masterData/method/createMethod.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/masterData/method/createMethod.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/masterData/room/createRoomType.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/masterData/room/createRoomType.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/packetumroh/packetCreate.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/packetumroh/packetCreate.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,19 +146,19 @@
     <property name="ts.external.directory.path" value="C:\Users\Alwan\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\images" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\app\Http\Controllers\User" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\storage\app" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\category" />
-      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\airlines" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\images" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\sass" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\storage\bannerPacket" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData" />
       <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\category" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\public\images" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\app\Http\Controllers\User" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\storage\app" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\category" />
+      <recent name="D:\Project\KP\THI-Modul Paket Umroh\tokohaji\resources\views\admin\masterData\airlines" />
     </key>
   </component>
   <component name="RunManager">
@@ -205,7 +208,7 @@
       <workItem from="1595826717759" duration="9688000" />
       <workItem from="1596682683835" duration="4416000" />
       <workItem from="1596946866862" duration="279000" />
-      <workItem from="1597225575753" duration="3889000" />
+      <workItem from="1597225575753" duration="4968000" />
     </task>
     <servers />
   </component>
