@@ -137,13 +137,14 @@
                 document.getElementById('count').innerHTML = '<b>'+statusPayment+'</b> ';
             }
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
             $('#paymentConfirm').submit(function (e) {
                 e.preventDefault();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
                 var dataForm = new FormData(this);
                 var file = $('#photo')[0].files[0];
                 dataForm.append('file',file,'photo');
