@@ -51,23 +51,28 @@
                             </tbody>
                         </table>
                     </div>
-         {{-- <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                            <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing {{ $transactions->firstItem() }} to {{ $transactions->lastItem() }} of total {{$transactions->total()}} entries</div>
-                        </div>
-                        <div class="col-sm-12 col-md-7">
-                            {{$transactions->links()}}
-                        </div>
-                    </div>--}}
                 </div>
             </div>
     </div>
 @endsection
 @push('js')
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
     <script>
         $(document).ready( function () {
-            $('#transactionTable').DataTable(function () {
-            });
+            $('#transactionTable').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        filename: 'Transaksi',
+                        title: 'Daftar Transaksi'
+                    },
+                ],
+            } );
         } );
     </script>
 @endpush

@@ -57,6 +57,11 @@
                         <i class="nav-icon fas fa-database"></i>
                         <p>Master Data</p>
                     </a>
+                </li><li class="nav-item">
+                    <a href="{{route('reportData')}}" class="nav-link {{(request()->is('*report*')) ? 'active':''}}">
+                        <i class="nav-icon fas fa-print"></i>
+                        <p>Report Data</p>
+                    </a>
                 </li>
             </ul>
         </nav>

@@ -39,4 +39,14 @@ class AdminController extends Controller
             'trOder'=>$troder,
         ]);
     }
+
+    public function report(Request $request){
+        $tranasction = null;
+        if ($request->has('start_date') ){
+        $tranasction = Transaction::whereBetween('created_at',[$request->start_date,$request->end_date])
+            ->get();
+        }
+
+        return view('admin.report',['transaction'=>$tranasction]);
+    }
 }

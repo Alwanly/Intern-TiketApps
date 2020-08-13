@@ -89,6 +89,8 @@ Route::prefix('admin')->middleware(['isAdmin','auth'])->group(function (){
     Route::post('/master_data/rekening/store','Admin\MasterDataController@storeRekening')->name('storeRekening');
     Route::get('/master_data/rekening/edit/{id}','Admin\MasterDataController@editRekening')->name('editRekening');
     Route::put('/master_data/rekening/update/{id}','Admin\MasterDataController@updateRekening')->name('updateRekening');
+
+    Route::get('/report',"Admin\AdminController@report")->name('reportData');
 });
 
 //* User Route *///

@@ -12,7 +12,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
 
     <!-- Datatable--->
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -54,6 +55,9 @@
 <!-- Datatable--->
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css"></script>
+{{--<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"> </script>--}}
+{{--<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"> </script>--}}
 
 @stack('js')
 </body>
