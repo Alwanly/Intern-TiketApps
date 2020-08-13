@@ -127,14 +127,14 @@
                         <div class="form-group">
                             <label for="">Photo KTP</label>
                             <div class="input-group mb-3">
-                                    <input  name="photo" type="file" class="" id="photo" required>
+                                <input  name="photo" type="file" class="" id="photo" required>
+                             </div>
                         </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="reset" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

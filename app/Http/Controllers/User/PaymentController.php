@@ -44,7 +44,7 @@ class PaymentController extends Controller
 
         $request->session()->flash('status',true);
         $request->session()->flash('message','Payment Confirm Success');
-        return response()->json(['status'=>$payment]);
+        return response()->json(['status'=>true]);
     }
 
     public function expired(){

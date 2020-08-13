@@ -109,8 +109,8 @@ Route::prefix('u')->group(function (){
         Route::post('/checkCodeAgent','User\TransactionController@checkCodeAgent')->name('checkCodeAgent');
 
         //payment
-        Route::get('/payment/{id}','User\PaymentController@index')->name('paymentIndex');
-        Route::post('/payment/confirm','User\PaymentController@confirm')->name('paymentConfirm');
+        Route::get('payment/{id}','User\PaymentController@index')->name('paymentIndex');
+        Route::post('confirm','User\PaymentController@confirm')->name('paymentConfirm');
         Route::get('/payment/expired','User\PaymentController@expired')->name('paymentExpired');
 
         //purchase list
