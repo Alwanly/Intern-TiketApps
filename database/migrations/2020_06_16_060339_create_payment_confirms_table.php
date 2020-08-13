@@ -20,12 +20,10 @@ class CreatePaymentConfirmsTable extends Migration
             $table->integer('norekening');
             $table->string('rekening_name');
             $table->string('path_photoproof');
-            $table->unsignedInteger('status_id');
             $table->timestamps();
 
             $table->foreign('payment_id')->references('id')->on('payments');
             $table->foreign('bank_id')->references('id')->on('bank_masters');
-            $table->foreign('status_id')->references('id')->on('status_masters');
         });
     }
 
