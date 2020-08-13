@@ -23,5 +23,17 @@ class RolesTableSeeder extends Seeder
             'desc_role'=>'Mengelola BackEnd Modul Paket Umroh',
             'status_id'=>2
         ]);
+        DB::table('agent_types')->insert([
+            'title'=>'VIP',
+            'status_id'=>2]);
+        DB::table('agent_types')->insert([
+            'title'=>'Standar',
+            'status_id'=>2]);
+        DB::table('categories')->insert([
+            'category_name'=>'VIP',
+            'status_id'=>2]);
+        DB::table('categories')->insert([
+            'category_name'=>'Promo',
+            'status_id'=>2]);
     }
 }

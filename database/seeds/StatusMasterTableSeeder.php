@@ -18,7 +18,7 @@ class StatusMasterTableSeeder extends Seeder
             'Menunggu Waktu Berangkat','Dalam Perjalanan Umroh','Tiba di Tanah Air','Belum dibayar','Menunggu Konfirmasi',
             'Sudah Dibayar','Pembayaran Ditolak','Pembayaran Gagal','Pembayaran Expired','Ditolak','Menunggu Verifikasi'];
         $status_code =['','sa','sa','st','st','st','st','st','st','sp','sp','sp','sp','sp','sp','sag','sag'];
-        for ($i = 0;$i <= count($status_name) ;$i++){
+        for ($i = 1;$i <= count($status_name) ;$i++){
             DB::table('status_masters')->insert([
                 'status_code'=>$status_code[$i],
                 'status_name'=>$status_name[$i]
