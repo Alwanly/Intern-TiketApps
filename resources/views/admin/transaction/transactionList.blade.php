@@ -27,6 +27,7 @@
                             <thead>
                             <tr role="row">
                                 <th>No</th>
+                                <th>Transaction ID</th>
                                 <th>User</th>
                                 <th >Packet</th>
                                 <th>Date Transaction</th>
@@ -39,6 +40,7 @@
                             @foreach($transactions as $tr)
                                 <tr>
                                     <td>{{$i++}}</td>
+                                    <td>{{$tr->id}}</td>
                                     <td>{{$tr->user->name}}</td>
                                     <td>{{$tr->packet->packet_title}}</td>
                                     <td>{{$tr->getDateCreate()}}</td>
