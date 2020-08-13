@@ -36,7 +36,7 @@
                             {{-- Title --}}
                             <div class="form-group">
                                 <label for="inputEmail4">Title</label>
-                                <input name="packet_title" type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                                <input name="packet_title" type="text" class="form-control" id="inputEmail4" placeholder="Title">
                             </div>
                             {{-- Description --}}
                             <div class="form-group">

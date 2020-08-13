@@ -56,7 +56,7 @@ class MasterDataController extends Controller
     {
         $room = RoomType::find($id);
         $statusMaster = $this->statusMaster();
-        return view('admin.masterData.room.editRoomTYpe', ['room' => $room, 'status' => $statusMaster]);
+        return view('admin.masterData.room.editRoomType', ['room' => $room, 'status' => $statusMaster]);
     }
 
     public function updateRoomType($id, Request $request)
