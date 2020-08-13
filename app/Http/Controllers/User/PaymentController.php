@@ -25,32 +25,26 @@ class PaymentController extends Controller
     }
 
     public function confirm(Request $request){
-        try {
-            $dateConfirm = Carbon::now()->toDateString();
-            $time =  time();
-            $file = $request->file('photo');
-            $filename = $dateConfirm.'_'.$time.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
-            $path = 'storage/photoTransfer';
-            $file->move($path,$filename);
-            $namePhoto = asset('storage/photoTransfer/'.$filename);
-            $paymentC = PaymentConfirm::create([
-                'payment_id' => $request->payment_id,
-                'bank_id' => $request->bank_id,
-                'norekening' => $request->norekening,
-                'rekening_name'=> $request->rekening_name,
-                'path_photoproof' => $namePhoto,
-            ]);
-            $payment = Payment::find($paymentC->payment_id)->update(['status_id'=>11]);
+        $dateConfirm = Carbon::now()->toDateString();
+        $time =  time();
+        $file = $request->file('photo');
+        $filename = $dateConfirm.'_'.$time.'_'.$request->norekening.'.'.$file->getClientOriginalExtension();
+        $path = 'storage/photoTransfer';
+        $file->move($path,$filename);
+        $namePhoto = asset('storage/photoTransfer/'.$filename);
+        $paymentC = PaymentConfirm::create([
+            'payment_id' => $request->payment_id,
+            'bank_id' => $request->bank_id,
+            'norekening' => $request->norekening,
+            'rekening_name'=> $request->rekening_name,
+            'path_photoproof' => $namePhoto,
+        ]);
 
-            $request->session()->flash('status',true);
-            $request->session()->flash('message','Payment Confirm Success');
-        }catch (Exception $exception){
-            $payment = false;
-            $request->session()->flash('status',false);
-            $request->session()->flash('message','Payment Confirm Gagal');
-        }
+        $payment = Payment::find($paymentC->payment_id)->update(['status_id'=>11]);
 
-        return response()->json(['status',$payment]);
+        $request->session()->flash('status',true);
+        $request->session()->flash('message','Payment Confirm Success');
+        return response()->json(['status'=>$payment]);
     }
 
     public function expired(){
