@@ -21,7 +21,7 @@
                         <input name="start_date" type="date" class="form-control" id="start_date" placeholder="Email">
                     </div>
                     <div class="col-sm-3">
-                        <label for="end_date" class=" col-form-label">Tanggal Awal</label>
+                        <label for="end_date" class=" col-form-label">Tanggal Akhir</label>
                         <input name="end_date" type="date" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
                     <div class="col-sm-5 d-flex align-items-center">
